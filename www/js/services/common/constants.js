@@ -22,7 +22,7 @@ angular.module('services.common.constants',[])
 
   var _img = {
     avatar : "img/avatar.png",
-    profile_bg : "img/14569280153_4e318b755c_h.jpg"
+    profile_bg : "img/bg_new.png"
   }
   
   var constants = {

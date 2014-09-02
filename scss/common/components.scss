@@ -85,8 +85,19 @@
   }
 
   &.bar-dark-ui {
-      background: $blue-shade-color-1;
+      background: #383a4c;
       border-width: 0px;
+
+      .title {
+        color: #ffffff;
+      }
+
+      .button{
+        &.button-icon,
+        &.back-button{
+          color: #ffffff;
+        }
+      }
   }
 
   .title {

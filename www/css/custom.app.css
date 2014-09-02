@@ -7315,6 +7315,13 @@ ul.authorConnectIcons li {
   .bar.bar-blue, .bar-blue.bar {
     background: #0185a2;
     border-width: 0px; }
+  .bar.bar-dark-ui, .bar-dark-ui.bar {
+    background: #383a4c;
+    border-width: 0px; }
+    .bar.bar-dark-ui .title, .bar.bar-dark-ui .bar-dark-ui.bar {
+      color: #ffffff; }
+    .bar.bar-dark-ui .button.button-icon, .bar.bar-dark-ui .bar-dark-ui.bar, .bar.bar-dark-ui .button-icon.button, .bar.bar-dark-ui .button.back-button, .bar.bar-dark-ui .bar-dark-ui.bar, .bar.bar-dark-ui .back-button.button {
+      color: #ffffff; }
   .bar .title, .bar .bar {
     height: 60px;
     line-height: 60px;
@@ -7469,7 +7476,7 @@ ul.authorConnectIcons li {
     width: 88%;
     letter-spacing: 0.25px; }
   .main-page.home-bg {
-    background-image: url('../img/splash_13.jpg'); }
+    background: #383a4c; }
   .main-page .logo {
     background-size: contain;
     background-repeat: no-repeat;
@@ -7509,12 +7516,11 @@ ul.authorConnectIcons li {
 	login
 */
 .main-login-page, .signup-page {
-  background-image: url('../img/splash_13.jpg');
   text-align: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #ffffff; }
+  background-color: #383a4c; }
   .main-login-page .slogan, .signup-page .slogan {
     color: #556a78;
     font-weight: 400;
@@ -7538,49 +7544,62 @@ ul.authorConnectIcons li {
     text-decoration: none; }
   .main-login-page .list, .signup-page .list {
     width: 88%;
-    margin: 30% auto 16px auto; }
+    margin: 20% auto 30px auto; }
     .main-login-page .list label.lock:after, .signup-page .list label.lock:after {
       content: "";
-      background: url('../img/lock.png');
+      background: url('../img/lock_darkui.png');
       width: 22px;
       height: 22px;
       display: block;
       background-repeat: no-repeat;
-      top: 16px;
+      top: 14px;
       position: absolute;
       background-position: center;
       margin: 0 0 0 9%;
       background-size: contain;
-      left: -30px; }
+      left: -22px; }
     .main-login-page .list label.username:after, .signup-page .list label.username:after {
       content: "";
-      background: url('../img/user.png');
+      background: url('../img/user_darkui.png');
       width: 20px;
       height: 20px;
       display: block;
       background-repeat: no-repeat;
-      top: 16px;
+      top: 14px;
       position: absolute;
       background-position: center;
       margin: 0 0 0 9%;
       background-size: contain;
-      left: -30px; }
+      left: -22px; }
+    .main-login-page .list label.email:after, .signup-page .list label.email:after {
+      content: "";
+      background: url('../img/email_darkui.png');
+      width: 20px;
+      height: 20px;
+      display: block;
+      background-repeat: no-repeat;
+      top: 14px;
+      position: absolute;
+      background-position: center;
+      margin: 0 0 0 9%;
+      background-size: contain;
+      left: -22px; }
     .main-login-page .list label.item-input, .signup-page .list label.item-input {
       padding: 10px 0 4px 45px;
       background: transparent;
       border-width: 0 0 1px 0;
       border-style: solid;
-      border-color: rgba(255, 255, 255, 0.7); }
+      border-color: #606170; }
       .main-login-page .list label.item-input ::-webkit-input-placeholder, .signup-page .list label.item-input ::-webkit-input-placeholder {
-        color: #ffffff; }
+        color: #acadb5; }
       .main-login-page .list label.item-input :-moz-placeholder, .signup-page .list label.item-input :-moz-placeholder {
         /* Firefox 18- */
-        color: #ffffff; }
+        color: #acadb5; }
       .main-login-page .list label.item-input ::-moz-placeholder, .signup-page .list label.item-input ::-moz-placeholder {
         /* Firefox 19+ */
-        color: #ffffff; }
+        color: #acadb5; }
       .main-login-page .list label.item-input :-ms-input-placeholder, .signup-page .list label.item-input :-ms-input-placeholder {
-        color: #ffffff; }
+        color: #acadb5; }
       .main-login-page .list label.item-input input[type="text"], .main-login-page .list label.item-input input[type="password"], .signup-page .list label.item-input input[type="text"], .signup-page .list label.item-input input[type="password"] {
         font-size: 16px;
         color: #fff;
@@ -7595,8 +7614,7 @@ ul.authorConnectIcons li {
     text-transform: uppercase;
     font-size: 16px;
     letter-spacing: 0.5px;
-    z-index: 2;
-    opacity: 0.85; }
+    z-index: 2; }
     .main-login-page .button.button-signin, .main-login-page .button-signin.button, .signup-page .button.button-signin, .signup-page .button-signin.button {
       text-align: center;
       margin-bottom: 15px; }
@@ -7650,46 +7668,6 @@ ul.authorConnectIcons li {
         margin: 0 0 0 9%;
         background-size: contain;
         opacity: 0.3; }
-
-.signup-page .list {
-  width: 88%;
-  margin: 30% auto 16px auto; }
-  .signup-page .list label.lock:after {
-    content: "";
-    background: url('../img/lock.png');
-    width: 25px;
-    height: 25px;
-    display: block;
-    background-repeat: no-repeat;
-    top: 25%;
-    position: absolute;
-    background-position: center;
-    margin: 0 0 0 9%;
-    background-size: contain;
-    left: -16px; }
-  .signup-page .list label.username:after {
-    content: "";
-    background: url('../img/user.png');
-    width: 22px;
-    height: 22px;
-    display: block;
-    background-repeat: no-repeat;
-    top: 25%;
-    position: absolute;
-    background-position: center;
-    margin: 0 0 0 9%;
-    background-size: contain;
-    left: -16px; }
-  .signup-page .list label.item-input {
-    padding: 10px 0 4px 45px;
-    background: transparent;
-    border-width: 0 0 1px 0;
-    border-style: solid;
-    border-color: rgba(255, 255, 255, 0.7); }
-    .signup-page .list label.item-input input[type="text"], .signup-page .list label.item-input input[type="password"] {
-      font-size: 16px;
-      color: #fff;
-      letter-spacing: 0.5px; }
 
 /*
 	signup
