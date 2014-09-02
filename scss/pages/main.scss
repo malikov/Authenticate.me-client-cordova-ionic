@@ -6,12 +6,10 @@
 	@include page-slogan();
 	@include content-bg(cover, #ffffff);
 	
-
-
 	text-align: center;
 	
 	&.home-bg{
-		background-image: url('../img/splash_13.jpg');
+		background: #383a4c;
 	}
 	
 	.logo{

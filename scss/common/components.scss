@@ -82,7 +82,12 @@
   &.bar-blue {
       background: $blue-shade-color-1;
       border-width: 0px;
-    }
+  }
+
+  &.bar-dark-ui {
+      background: $blue-shade-color-1;
+      border-width: 0px;
+  }
 
   .title {
   	height: $bar-transparent-height;

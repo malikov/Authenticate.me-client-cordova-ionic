@@ -5,9 +5,9 @@ angular.module('services.common.constants',[])
 .service('Constants',[function(){
   	
   var _API = {
-  	//baseUrl: "http://authenticate-app-me.herokuapp.com"
+  	baseUrl: "http://authenticate-app-me.herokuapp.com"
     //baseUrl: "http://localhost:3000"
-    baseUrl: "http://192.168.0.105:3000"
+    //baseUrl: "http://192.168.0.105:3000"
   }
 
   var _providers = {
