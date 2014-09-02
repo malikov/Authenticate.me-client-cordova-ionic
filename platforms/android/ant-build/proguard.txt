@@ -1,0 +1,6 @@
+# view AndroidManifest.xml #generated:6
+-keep class com.frnchnrd.authenticateme.Authenticateme { <init>(...); }
+
+# view AndroidManifest.xml #generated:12
+-keep class com.phonegap.plugins.childBrowser.ChildBrowser { <init>(...); }
+

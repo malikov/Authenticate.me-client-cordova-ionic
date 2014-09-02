@@ -1,0 +1,143 @@
+@mixin inline-icons($url, $width, $height, $position,$marginTop,$marginBottom,$marginRight,$marginLeft){
+	content: "";
+	background: url($url);
+	width: $width;
+    height: $height;
+    display: block;
+    background-repeat: no-repeat;
+    top: $position;
+    position: absolute;
+    background-position: center;
+    margin: $marginTop $marginBottom $marginRight $marginLeft;
+    background-size: contain;
+}
+
+@mixin inline-icons-bg($color, $width, $height){
+	content: "";
+	width: $width;
+	height: $height;
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left:0;
+	background: $color;
+}
+
+@mixin custom-menu-item(){
+		width: 100%;
+		margin: 0 auto;
+		background: transparent;
+		border: transparent;
+}
+
+@mixin content-bg($type,$bg-color){
+	background-size: $type;		
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: $bg-color;
+}
+
+@mixin overlay-content-rgba($r, $g, $b, $opacity){
+	content: '\A';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba($r, $g, $b, $opacity);
+	z-index: 0;
+}
+
+@mixin overlay-content-img($url,$opacity){
+	content: '\A';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: url($url);
+	opacity: $opacity;
+	z-index: 0;
+}
+
+@mixin page-slogan() {
+	.slogan{
+		color: $text-color-default;
+		font-weight: 400;
+		line-height: 21px;
+		margin: 50px auto;
+		font-size: 15px;
+		width: 88%;
+		letter-spacing: 0.25px;
+	}
+}
+
+/*
+	Center unknown
+*/
+@mixin center-element() {
+  display: table;
+  width: 100%;
+  height: 100%;
+
+  .center-block {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+  }
+}
+
+/*
+	background style
+*/
+@mixin bg-gradient-style-1($bg-from-color, $bg-to-color) {
+	background: -moz-linear-gradient(left, $bg-from-color 0, $bg-to-color 68%);
+	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, $bg-from-color), color-stop(68%, $bg-to-color)); 
+	background: -webkit-linear-gradient(left bottom, $bg-from-color 0, $bg-to-color 68%);
+	background: -o-linear-gradient(left bottom, $bg-from-color 0, $bg-to-color 68%);
+	background: linear-gradient(to top right, $bg-from-color, $bg-to-color 68%);
+}
+
+@mixin bg-gradient-style-2($bg-from-color, $bg-to-color) {
+	background: -moz-linear-gradient(left,$bg-from-color 0,$bg-to-color 90%);
+	background: -webkit-gradient(linear,left top,right top,color-stop(0%,$bg-from-color),color-stop(90%,$bg-to-color));
+	background: -webkit-linear-gradient(left,$bg-from-color 0,$bg-to-color 90%);
+	background: -o-linear-gradient(left,$bg-from-color 0,$bg-to-color 90%);
+	background: linear-gradient(to right,$bg-from-color 0,$bg-to-color 90%);
+}
+
+@mixin bg-gradient-style-3($bg-from-color, $bg-to-color) {
+	background: -moz-linear-gradient(top,$bg-from-color 0,$bg-to-color 90%);
+	background: -webkit-gradient(linear, bottom, top,color-stop(0%,$bg-from-color),color-stop(90%,$bg-to-color));
+	background: -webkit-linear-gradient(top,$bg-from-color 0,$bg-to-color 90%);
+	background: -o-linear-gradient(top,$bg-from-color 0,$bg-to-color 90%);
+	background: linear-gradient(to top,$bg-from-color 0,$bg-to-color 90%);
+}
+
+@mixin bg-gradient-style-circular($position1, $position2, $bg-from-color, $bg-to-color) {
+	$output : '';
+
+	@if $position2 == "" {
+	  $output : $position1;
+	}@else {
+		$output : $position1+" "+$position2;
+	}
+
+	/* IE10 Consumer Preview */ 
+	background-image: -ms-radial-gradient($output, circle farthest-corner, $bg-from-color 0%, $bg-to-color 100%);
+
+	/* Mozilla Firefox */ 
+	background-image: -moz-radial-gradient($output, circle farthest-corner, $bg-from-color 0%, $bg-to-color 100%);
+
+	/* Opera */ 
+	background-image: -o-radial-gradient($output, circle farthest-corner, $bg-from-color 0%, $bg-to-color 100%);
+
+	/* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-gradient(radial, $output, 0, $output, 561, color-stop(0, $bg-from-color), color-stop(1, $bg-to-color));
+
+	/* Webkit (Chrome 11+) */ 
+	background-image: -webkit-radial-gradient($output, circle farthest-corner, $bg-from-color 0%, $bg-to-color 100%);
+
+	/* W3C Markup, IE10 Release Preview */ 
+	background-image: radial-gradient(circle farthest-corner at $output, $bg-from-color 0%, $bg-to-color 100%);
+}

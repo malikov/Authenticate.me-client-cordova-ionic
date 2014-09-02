@@ -1,0 +1,159 @@
+/*
+	login
+*/
+
+.main-login-page,
+.signup-page
+{
+	@include page-slogan();
+	background-image: url('../img/splash_13.jpg');
+	text-align:center;
+
+	@include content-bg(cover, #ffffff);
+	
+	
+	.logo{
+		@include content-bg(contain,transparent);
+		background-image: url('../img/logo.png');
+		width:25%;
+		height:15%;
+		margin: 25% auto 25px auto;
+	}
+
+
+	.pseudo-link{
+		color: $text-color-link;
+		font-size: 15px;
+		text-decoration: none;
+	}
+
+	.list {
+		width:88%;
+		margin: 30% auto 16px auto;
+		label.lock{
+			&:after{
+				@include inline-icons('../img/lock.png', 22px, 22px, 14px, 0, 0, 0, 9%);
+				left: -30px;
+			}
+
+		}
+
+		label.username{
+			&:after{
+				@include inline-icons('../img/user.png', 20px, 20px, 14px, 0, 0, 0, 9%);
+				left: -30px;
+			}
+		}
+		label.item-input{
+			padding: 10px 0 4px 45px;
+			background: transparent;
+			border-width: 0 0 1px 0;
+			border-style: solid;
+			border-color: rgba(255,255,255,0.7);
+			::-webkit-input-placeholder {
+			   color: #ffffff;
+			}
+
+			:-moz-placeholder { /* Firefox 18- */
+			   color: #ffffff;  
+			}
+
+			::-moz-placeholder {  /* Firefox 19+ */
+			   color: #ffffff;  
+			}
+
+			:-ms-input-placeholder {  
+			   color: #ffffff;  
+			}
+			input[type="text"], 
+			input[type="password"]{
+				font-size : 16px;
+				color: #fff;
+				letter-spacing: 0.5px;
+			}
+		}
+	}
+
+	.button {
+		width: 88%;
+		height:56px;
+		margin:5px auto;
+		position:relative;
+		padding:0;
+		background-position: cover;
+		text-transform: uppercase;
+		font-size:16px;
+		letter-spacing: 0.5px;
+		z-index:2;
+		opacity: 0.85;
+
+		&.button-signin {
+			text-align: center;	
+			margin-bottom:15px;	
+		}
+
+		&.button-twitter {
+			padding: 0 0 0 12%;
+
+			&:before {
+				@include inline-icons-bg(rgba(0,0,0,0.5), 20%, 100%);
+				background: $blue-shade-color-6;
+			}
+
+			&:after{
+				@include inline-icons('../img/twitter-icon.png', 25px, 25px, 25%, 0, 0, 0, 9%);
+				opacity:0.3;
+			}
+		}
+		&.button-instagram {
+			padding: 0 0 0 12%;
+
+			&:before {
+				@include inline-icons-bg(rgba(0,0,0,0.5), 20%, 100%);
+				background: $blue-shade-color-5;
+			}
+
+			&:after{
+				@include inline-icons('../img/instagram-icon.png', 30px, 30px, 25%, 0, 0, 0, 9%);
+				opacity:0.3;
+			
+			}
+		}
+	}
+}
+
+.signup-page{
+	.list {
+		width:88%;
+		margin: 30% auto 16px auto;
+		label.lock{
+			&:after{
+				@include inline-icons('../img/lock.png', 25px, 25px, 25%, 0, 0, 0, 9%);
+				left: -16px;
+			}
+
+		}
+
+		label.username{
+			&:after{
+				@include inline-icons('../img/user.png', 22px, 22px, 25%, 0, 0, 0, 9%);
+				left: -16px;
+			}
+		}
+		label.item-input{
+			padding: 10px 0 4px 45px;
+			background: transparent;
+			border-width: 0 0 1px 0;
+			border-style: solid;
+			border-color: rgba(255,255,255,0.7);
+
+			input[type="text"], 
+			input[type="password"]{
+				font-size : 16px;
+				color: #fff;
+				letter-spacing: 0.5px;
+			}
+		}
+	}
+	
+}

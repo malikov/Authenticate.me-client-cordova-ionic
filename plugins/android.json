@@ -1,0 +1,98 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "res/xml/config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Keyboard\"><param name=\"android-package\" value=\"com.ionic.keyboard.IonicKeyboard\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"ChildBrowser\"><param name=\"android-package\" value=\"com.phonegap.plugins.childBrowser.ChildBrowser\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/manifest/application": [
+                        {
+                            "xml": "<activity android:label=\"@string/app_name\" android:name=\"com.phonegap.plugins.childBrowser.ChildBrowser\"><intent-filter></intent-filter></activity>",
+                            "count": 1
+                        }
+                    ],
+                    "/*": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 3
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "com.ionic.keyboard": {
+            "PACKAGE_NAME": "com.frnchnrd.authenticateme"
+        },
+        "com.phonegap.plugins.childbrowser": {
+            "PACKAGE_NAME": "com.frnchnrd.authenticateme"
+        },
+        "org.apache.cordova.console": {
+            "PACKAGE_NAME": "com.frnchnrd.authenticateme"
+        },
+        "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.frnchnrd.authenticateme"
+        },
+        "org.apache.cordova.inappbrowser": {
+            "PACKAGE_NAME": "com.frnchnrd.authenticateme"
+        },
+        "org.apache.cordova.network-information": {
+            "PACKAGE_NAME": "com.frnchnrd.authenticateme"
+        },
+        "org.apache.cordova.file": {
+            "PACKAGE_NAME": "com.frnchnrd.authenticateme"
+        },
+        "org.apache.cordova.camera": {
+            "PACKAGE_NAME": "com.frnchnrd.authenticateme"
+        },
+        "org.apache.cordova.file-transfer": {
+            "PACKAGE_NAME": "com.frnchnrd.authenticateme"
+        }
+    },
+    "dependent_plugins": {}
+}

@@ -1,0 +1,46 @@
+<ion-side-menus>
+
+  <ion-pane ion-side-menu-content>
+    <ion-nav-bar class="bar nav-title-slide-ios7">
+    
+    <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
+    </ion-nav-bar>
+    
+    <ion-nav-view name="content" animation="slide-left-right"></ion-nav-view>
+  </ion-pane>
+
+  <ion-side-menu side="left">
+    <ion-content scroll="false" class="sidebar-bg">
+      <ion-list>
+        <ion-item class="custom-menu-item profile-item"  nav-clear menu-close href="#/app/profile">
+          <div class="author-icon-row">
+              <span style="background-image:url({{user.avatar}})"></span>
+          </div>
+
+          <div class="author-info centerBlock">
+              <h1>{{user.name}}</h1>
+              
+          </div>
+        </ion-item>
+        
+        <ion-item class="custom-menu-item settings-item" nav-clear menu-close href="#/app/profile/settings">
+          SETTINGS
+        </ion-item>
+
+        <ion-item class="custom-menu-item messages-item" nav-clear menu-close href="#/app/users">
+          USERS
+        </ion-item>
+        
+      </ion-list>
+      
+      <div class="custom-menu-item menu-logout" nav-clear menu-close ng-click="logout()">
+        <a class="item-content">
+          SIGN OUT
+        </a>
+      </div>
+
+    </ion-content>
+  </ion-side-menu>
+
+
+</ion-side-menus>

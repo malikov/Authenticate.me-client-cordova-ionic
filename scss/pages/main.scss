@@ -1,0 +1,55 @@
+/*
+	main css
+*/
+
+.main-page {
+	@include page-slogan();
+	@include content-bg(cover, #ffffff);
+	
+
+
+	text-align: center;
+	
+	&.home-bg{
+		background-image: url('../img/splash_13.jpg');
+	}
+	
+	.logo{
+		@include content-bg(contain,transparent);
+		background-image: url('../img/a_logo.png');
+		width:30%;
+		height:20%;
+		margin: 25% auto 25px auto;
+		position: relative;
+		z-index:2;
+	}
+	.slogan {
+		font-size: 16px;
+		color: #ffffff;
+		position: relative;
+		z-index:2;
+	}
+
+	.pseudo-link{
+		color: rgba(255,255,255,1);
+		font-size: 15px;
+		text-decoration: none;
+	}
+
+	.button {
+		width: 88%;
+		height:56px;
+		margin:10px auto;
+		position:relative;
+		padding:0;
+		background-position: cover;
+		text-transform: uppercase;
+		font-size:16px;
+		letter-spacing: 0.5px;
+		z-index:2;
+
+	}
+
+	
+}
+

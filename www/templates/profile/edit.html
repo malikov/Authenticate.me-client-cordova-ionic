@@ -1,0 +1,58 @@
+<div class="modal">
+  <ion-header-bar>
+    <h1 class="title">Edit Profile</h1>
+    <div class="buttons right-buttons">
+     <button side="right" class="button button-green button-save" ng-click="updateUser()"></button>
+    </div>
+    <div class="buttons left-buttons">
+     <button  class="button button-red button-cancel" ng-click="closeEdit()">
+     </button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="has-header profile-page edit-profile-page">
+   
+    <div class="profile-img-wrapper  edit-profile" style="background-image: url({{user.profileBg}});">  
+            <div class="avatar-section">
+              <div class="content">
+                  <div class="avatar-icon">
+                    <div class="avatar-img" style="background-image: url({{user.avatar}});">
+                      <button class="button edit-avatar" ng-click="editBg('avatar')"></button>
+                    </div>
+                  </div>
+                    <button class="button button-full edit-bg" ng-click="editBg('top')">
+                    Change Background
+                  </button>
+                  <input type="file" file-input="fileImg"/>
+              </div>
+            </div>
+
+  </div>
+    <div class="profile-menu-wrapper">
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Username</span>
+          <input type="text" placeholder="Username" ng-model="user.username" />
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Name</span>
+          <input type="text" placeholder="Enter your name" ng-model="user.name" />
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Location</span>
+          <input type="text" placeholder="ie: Toronto, ON, Canada" ng-model="user.location"/>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Website</span>
+          <input type="text" placeholder="ie: myweb.com" ng-model="user.website"/>
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Bio</span>
+          <textarea placeholder="Bio" ng-model="user.bio">
+          </textarea>
+        </label>
+    </div>
+
+    </div>
+     
+  </ion-content>
+</div>

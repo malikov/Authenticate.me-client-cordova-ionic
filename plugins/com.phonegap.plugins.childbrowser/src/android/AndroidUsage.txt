@@ -1,0 +1,16 @@
+Examples of usage in JavaScript of new ChildBrowser and screenshots of results on Android:
+
+window.plugins.childBrowser.showWebPage("http://en.wikipedia.org/wiki/Nietzsche",
+    { showLocationBar: true, showNavigationBar: true, showAddress: true});        // ttt.png
+
+window.plugins.childBrowser.showWebPage("http://en.wikipedia.org/wiki/Nietzsche",
+    { showLocationBar: true, showNavigationBar: true, showAddress: false});       // ttf.png
+
+window.plugins.childBrowser.showWebPage("http://en.wikipedia.org/wiki/Nietzsche",
+    { showLocationBar: true, showNavigationBar: false, showAddress: true});       // tft.png
+
+window.plugins.childBrowser.showWebPage("http://en.wikipedia.org/wiki/Nietzsche",
+    { showLocationBar: true, showNavigationBar: false, showAddress: false});      // tff.png
+
+window.plugins.childBrowser.showWebPage("http://en.wikipedia.org/wiki/Nietzsche",
+    { showLocationBar: false, showNavigationBar: true, showAddress: false});      // ftf.png

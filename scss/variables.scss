@@ -1,0 +1,81 @@
+/*
+	Variables
+*/
+
+/*
+	default colors
+*/
+$white-color: #fff !default;
+$white-shade-color-f3: #f3f3f3 !default;
+
+$black-shade-color-1: #151b20 !default;
+$black-shade-color-2: #38454f !default;
+$black-shade-color-3: #49799a !default;
+$black-shade-color-4: #1d252c !default;
+$black-shade-color-5: #2c3944 !default;
+
+
+$light-grey-color: #e6e6e6 !default;
+
+$green-shade-color-1: #88c057 !default;
+
+$red-shade-color-1: #ed7161 !default;
+
+$text-color-default: #556a78 !default;
+$text-color-link: #0185a2 !default;
+
+$blue-shade-color-0: 	#01758f !default;
+$blue-shade-color-1:	#0185a2 !default;
+$blue-shade-color-2:	#66c2c8 !default;
+$blue-shade-color-3:	#01758f !default;
+$blue-shade-color-4:   	#457ca9 !default;
+$blue-shade-color-5:	#39688d !default;
+$blue-shade-color-6:	#319bea !default;
+$blue-shade-color-7:    #48a0dc !default;
+$blue-shade-color-8:    #19d5ce !default;
+$blue-shade-color-8-opacity:    rgba(25,213,206,0.5) !default;
+
+
+/*
+	button css
+*/
+$button-custom-icon-size:                24px !default;
+$button-custom-icon-color:                $black-shade-color-3;
+
+$button-transparent-bg:                 transparent !default;
+$button-transparent-text:               #fff !default;
+$button-transparent-border:             transparent !default;
+$button-transparent-active-bg:          rgba(0,0,0,0.5) !default;
+$button-transparent-active-border:      transparent !default;
+
+$button-signin-bg:                 		#89c058 !default;
+$button-instagram-bg:                 	#3f729b !default;
+$button-twitter-bg:                 	#55acee !default;
+$button-facebook-bg:                 	#375a9a !default;
+
+
+/*
+	Bars
+*/
+$bar-transparent-height:                      60px !default;
+$bar-transparent-title-font-size:             20px !default;
+$bar-transparent-padding-portrait:            5px !default;
+$bar-transparent-padding-landscape:           5px !default;
+$bar-transparent-transparency:                1 !default;
+
+/*
+
+*/
+$bar-transparent-bg:                    rgba($button-light-bg, $bar-transparency) !default;
+$bar-transparent-text:                  $button-light-text !default;
+$bar-transparent-border:                $button-light-border !default;
+$bar-transparent-active-bg:             $button-light-active-bg !default;
+$bar-transparent-active-border:         $button-light-active-border !default;
+
+/*
+
+*/
+$button-custom-bar-button-font-size:     13px !default;
+$button-custom-bar-button-height:        32px !default;
+$button-custom-bar-button-padding:       8px !default;
+$button-custom-bar-button-icon-size:     20px !default;

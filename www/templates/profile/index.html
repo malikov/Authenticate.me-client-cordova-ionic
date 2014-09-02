@@ -1,0 +1,67 @@
+<ion-view title="Profile" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon">
+    </button>
+  </ion-nav-buttons>
+  <ion-content class="has-header profile-page" scroll="false">
+   
+    <div class="profile-img-wrapper  profile-content" style="background-image: url({{user.profileBg}});">  
+      <ion-slide-box on-slide-changed="slideHasChanged($index)">
+          <ion-slide>
+            <div class="avatar-section">
+              <div class="content">
+                  <div class="avatar-icon">
+                    <div class="avatar-img" style="background-image: url({{user.avatar}});">
+                      <button class="button" ng-click="goTo('edit')"></button>
+                    </div>
+                  </div>
+
+                  <div class="info-section">
+                    <h1 ng-if="user.name">
+                      {{user.name}}
+                    </h1>
+                    <h1 ng-if="user.name == ''">
+                      {{user.username}}
+                    </h1>
+                    <h2 ng-if="user.name">
+                      @{{user.username}}
+                    </h2>
+                  </div>
+              </div>
+            </div>
+          </ion-slide>
+          <ion-slide>
+              <div class="avatar-section avatar-bio-section">
+                  <div class="content info-section">
+                    <p>
+                     {{user.bio}}
+                    </p>
+                    <p>
+                     {{user.website}}
+                    </p>
+                    <h2 class="city">
+                      {{user.location}}
+                    </h2>
+                  </div>
+              </div>
+          </ion-slide>
+      </ion-slide-box>
+      <!--
+      <div class="follower-section">
+                      <span ng-click="goTo('followers')" class="first">
+                        1150000 <br/>
+                        Followers
+                      </span>
+                      <span ng-click="goTo('followings')">
+                        115 <br>Following
+                      </span>
+                  </div>
+        -->
+    </div>
+
+    <div class="profile-menu-wrapper">
+      
+    </div>
+     
+  </ion-content>
+</ion-view>
