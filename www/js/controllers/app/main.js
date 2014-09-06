@@ -1,8 +1,11 @@
 'use strict';
-
 /*
-	'services.common.constants'
-*/
+ * controllers/app/main.js
+ * main controller
+ *
+ * (c) 2014 Vincent Maliko http://frnchnrd.com
+ * License: MIT
+ */
 angular.module('controllers.main', [])
 
 .controller('AppCtrl', [
@@ -13,10 +16,9 @@ angular.module('controllers.main', [])
 	'$scope',
 	'$state',
 	'$stateParams',
-	'$ionicNavBarDelegate',
 	'Constants',
 	'AuthService',
-function($ionicModal,$ionicLoading, $ionicPlatform, $ionicViewService, $scope,$state, $stateParams, $ionicNavBarDelegate, Constants, AuthService) {
+function($ionicModal,$ionicLoading, $ionicPlatform, $ionicViewService, $scope,$state, $stateParams, Constants, AuthService) {
 	if(Constants.DEBUGMODE){
 		console.log("app/main.js controller loaded");
 	}
@@ -63,7 +65,7 @@ function($ionicModal,$ionicLoading, $ionicPlatform, $ionicViewService, $scope,$s
 
 	// Catching the broadcasted event 
 	$scope.$on('event:app-networkRequired', function() {
-	    //display the modal view with netowrk required
+	    //display the modal view
 	    $scope.modal.show();
 	});
 

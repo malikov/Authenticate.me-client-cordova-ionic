@@ -19,7 +19,10 @@
 				label.item-input{
 					.input-label{
 						color: #49799a;
+						padding: 4px 0 4px 8px;
 					}
+
+
 					input[type="text"], 
 					input[type="password"]{
 						font-size : 16px;
@@ -47,7 +50,9 @@
 				.avatar-section {
 					padding:0;
 					.content {
-
+						.avatar-icon {
+							min-height:170px;
+						}
 						button {
 							
 							border:none;

@@ -1,4 +1,10 @@
 'use.strict'
+/*
+ * common/constants.js
+ *
+ * (c) 2014 Vincent Maliko http://frnchnrd.com
+ * License: MIT
+ */
 
 angular.module('services.common.constants',[])
 
@@ -10,27 +16,16 @@ angular.module('services.common.constants',[])
     //baseUrl: "http://192.168.0.105:3000"
   }
 
-  var _providers = {
-    instagram : {
-        authorizationURL: "https://instagram.com/accounts/login/?next=/oauth/authorize"
-    },
-
-    twitter: {
-      authorizationURL: "https://api.twitter.com/oauth/authorize?oauth_token="
-    }
-  }
-
   var _img = {
     avatar : "img/avatar.png",
     profile_bg : "img/bg_new.png"
   }
   
   var constants = {
-    DEBUGMODE : true,
+    DEBUGMODE : false,
     SHOWBROADCAST_EVENTS :true,
     API: _API,
     IMG: _img,
-    PROVIDERS: _providers
   };
 
   return constants;

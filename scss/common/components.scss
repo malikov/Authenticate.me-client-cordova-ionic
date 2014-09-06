@@ -55,7 +55,7 @@
 
   	&.button-red {
 	    @extend .button-transparent;
-      @include button-style($red-shade-color-1, $button-transparent-border, rgba(255,0,0,1), $button-transparent-active-border, $button-transparent-text);
+      @include button-style(#dc6263, $button-transparent-border, rgba(255,0,0,1), $button-transparent-active-border, $button-transparent-text);
       background-image: none;
   	}
 
@@ -125,8 +125,8 @@
 
         &.button-cancel{
           &:after{
-            @include inline-icons('../img/x-mark.png', 30px, 30px, 12px, 0, 0, 0, 9%);
-            left: 8px;
+            @include inline-icons('../img/x-mark.png', 20px, 20px, 16px, 0, 0, 0, 9%);
+            left: 13px;
           }
         }
       }
@@ -142,8 +142,8 @@
 
         &.button-save{
             &:after{
-            @include inline-icons('../img/check-mark.png', 30px, 30px, 12px, 0, 0, 0, 9%);
-            left: 11px;
+            @include inline-icons('../img/check-mark.png', 20px, 20px, 16px, 0, 0, 0, 9%);
+            left: 16px;
           }
         }
 
@@ -161,35 +161,39 @@
   @include custom-menu-item();
   letter-spacing : 0.25px;
   text-align: center;
-  font-size : 18px;
+  font-size : 16px;
 
   &.profile-item {
-    @include bg-gradient-style-1($black-shade-color-4, $black-shade-color-5);
+    background: #424458;
     position: relative;
     text-align: center;
     border: none;
 
     .author-info h1 {
-      font-size: 18px;
+      font-size: 16px;
       color: #fff;
       letter-spacing : 1px;
     }
   }
 
   &.settings-item:after {
-    @include inline-icons('../img/settings-icon.png', 22px, 22px, 50%, -10px, 0, 0, 15%);
+    @include inline-icons('../img/settings-icon.png', 14px, 14px, 50%, -7px, 0, 0, 25%);
   }
 
   &.messages-item:after {
-    @include inline-icons('../img/messages-icon.png', 22px, 22px, 50%, -10px, 0, 0, 15%);
+    @include inline-icons('../img/messages-icon.png', 14px, 14px, 50%, -7px, 0, 0, 25%);
+  }
+
+  &.users-item:after {
+    @include inline-icons('../img/group_user-icon.png', 25px, 25px, 50%, -13px, 0, 0, 25%);
   }
 
   &.threads-item:after {
-    @include inline-icons('../img/group.png', 22px, 22px, 50%, -10px, 0, 0, 15%);
+    @include inline-icons('../img/group.png', 14px, 14px, 50%, -7px, 0, 0, 25%);
   }
 
   .item-content {
-    padding: 30px 15px 30px 15px;
+    padding: 20px 15px 20px 15px;
     background-color: transparent;
     color: #fff;
 
@@ -207,7 +211,7 @@
   height: 80px;
   
   &:after{
-    @include inline-icons('../img/logout-icon.png', 22px, 22px, 50%, -11px, 0, 0, 15%);
+    @include inline-icons('../img/logout-icon.png', 14px, 14px, 50%, -7px, 0, 0, 25%);
   }
 
   .item-content {

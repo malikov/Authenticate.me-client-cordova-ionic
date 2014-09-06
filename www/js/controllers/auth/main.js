@@ -1,9 +1,13 @@
 'use strict';
 
 /*
-	'services.common.constants'
-	'services.common.auth'
-*/
+ * controllers/auth/main.js
+ * controller for the authentication page
+ *
+ * (c) 2014 Vincent Maliko http://frnchnrd.com
+ * License: MIT
+ */
+
 angular.module('controllers.auth', [])
 
 .controller('AuthCtrl', [
@@ -41,7 +45,7 @@ function($ionicLoading,$ionicNavBarDelegate,$ionicPopup, $timeout, $scope,$state
 		return $state.go('app.profile');
 	}
 
-	// function for login user in the system
+	// function for loging the user
 	$scope.authenticateUser = function(provider){
 		var error = function(error){
 			$ionicLoading.hide();
@@ -52,9 +56,8 @@ function($ionicLoading,$ionicNavBarDelegate,$ionicPopup, $timeout, $scope,$state
 			}
 
 			$scope.error = error;
-			// if error is 404 the interceptor throws 
-			//show popup error
-			// An elaborate, custom popup
+			
+
 			var errorPopup = $ionicPopup.show({
 		    	templateUrl: 'templates/modal/error.html',
 		    	title: 'Error',
@@ -81,8 +84,6 @@ function($ionicLoading,$ionicNavBarDelegate,$ionicPopup, $timeout, $scope,$state
 				console.log(response);
 			}
 
-			// request login with response, if the user is logged in send him to the profile page
-			// need to keep track of the auth process I'm lo
 			$ionicLoading.hide();
 			$state.go('app.profile');
 		}
@@ -116,9 +117,7 @@ function($ionicLoading,$ionicNavBarDelegate,$ionicPopup, $timeout, $scope,$state
 			$ionicLoading.hide();
 			console.log(error);
 			$scope.error = error;
-			// if error is 404 the interceptor throws 
-			//show popup error
-			// An elaborate, custom popup
+			
 			var errorPopup = $ionicPopup.show({
 		    	templateUrl: 'templates/modal/error.html',
 		    	title: 'Error',
@@ -144,11 +143,6 @@ function($ionicLoading,$ionicNavBarDelegate,$ionicPopup, $timeout, $scope,$state
    		 });
 
 		AuthService.register($scope.user).then(success,error);
-	}
-
-	// display signup modal
-	$scope.promptSignup = function(){
-		// use modal to display signup
 	}
 
 	// display signup modal

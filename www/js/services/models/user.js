@@ -1,35 +1,23 @@
 'use.strict'
+/*
+ * models/user.js
+ *
+ * (c) 2014 Vincent Maliko http://frnchnrd.com
+ * License: MIT
+ */
 
-angular.module('services.models.user',['services.models.image'])
+angular.module('services.models.user',[])
 
-.factory('UserModel',['$http','$q', 'Constants', 'ImageModel',
-  function($http, $q, Constants, ImageModel){
+.factory('UserModel',['$http','$q', 'Constants',
+  function($http, $q, Constants){
 
     var _urlApi = Constants.API.baseUrl+'/users';
 
     var userModel = function(info){
       this.info = info || {objectId: null};
-      this.urlApi = _urlApi;
+      this.url = _urlApi;
     };
     
-    // get /api/users/all
-    userModel.prototype.all = function(){
-      var self = this;
-      var deferred = $q.defer();
-
-      var success = function(response, status, headers, config){
-        deferred.resolve(response.payload);
-      }
-
-      var error = function(error, status, headers, config){
-        deferred.reject(error);
-      }
-
-      $http.get().success(success).error(error);
-
-      return deferred.promise;
-    }
-
     //get /api/users/:id
     userModel.prototype.get = function(id){
       var self = this;
@@ -45,14 +33,13 @@ angular.module('services.models.user',['services.models.image'])
         deferred.reject(error);
       }
 
-      $http.get(_urlApi+'/'+id).success(success).error(error);
+      $http.get(this.url+'/'+id).success(success).error(error);
       
       return deferred.promise;
     }
 
     // post /api/users/
     userModel.prototype.create = function(){
-      var self = this;
       var deferred = $q.defer();
 
       var success = function(response, status, headers, config){
@@ -63,7 +50,7 @@ angular.module('services.models.user',['services.models.image'])
         deferred.reject(error);
       }
 
-      $http.post(_urlApi, {user : self.info}).success(success).error(error);
+      $http.post(this.url, {user : self.info}).success(success).error(error);
       
       return deferred.promise; 
     }
@@ -82,7 +69,7 @@ angular.module('services.models.user',['services.models.image'])
         return deferred.reject(error);
       }
 
-      $http.put(_urlApi+'/'+self.info.objectId, {user : self.info}).success(success).error(error);
+      $http.put(this.url+'/'+self.info.objectId, {user : self.info}).success(success).error(error);
 
       return deferred.promise; 
     }

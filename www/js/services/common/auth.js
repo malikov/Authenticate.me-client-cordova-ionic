@@ -1,13 +1,16 @@
 'use strict';
-/*
-  'components.localStorage'
-  'components.facebook'
-  'services.models.user'
-*/
-angular.module('services.common.auth',['services.models.user','ngCordova.plugins.localStorage','ngCordova.plugins.childBrowser'])
 
-.service('AuthService', ['$http','$rootScope','$q', 'UserModel', '$cordovaLocalStorage', '$cordovaChildBrowser','Constants',
-  function($http, $rootScope, $q, UserModel, $cordovaLocalStorage, $cordovaChildBrowser,Constants){
+/*
+ * common/auth.js
+ *
+ * (c) 2014 Vincent Maliko http://frnchnrd.com
+ * License: MIT
+ */
+
+angular.module('services.common.auth',['services.models.user','ngCordova.plugins.localStorage'])
+
+.service('AuthService', ['$http','$rootScope','$q', 'UserModel', '$cordovaLocalStorage', 'Constants',
+  function($http, $rootScope, $q, UserModel, $cordovaLocalStorage, Constants){
 
   var auth = {
     currentUser: {},
@@ -15,7 +18,7 @@ angular.module('services.common.auth',['services.models.user','ngCordova.plugins
     init : function(){
       var self = this;
 
-      //sessionToken
+      //set the session token in the 
       $http.defaults.headers.common['X-Access-Token'] = $cordovaLocalStorage.getItem('sessionToken') || ""; 
 
       var userData = $cordovaLocalStorage.getItem('app_user') ||  {profileBg:"", avatar: "", objectId : "", username: "", name : "", bio:"",location:"",website:""};
@@ -63,7 +66,7 @@ angular.module('services.common.auth',['services.models.user','ngCordova.plugins
 
       var success = function(response, status, headers, config){
         if(Constants.DEBUGMODE){
-          console.log("success callback function response");
+          console.log("AuthService.register success callback");
           console.log(response);
         }
 
@@ -72,7 +75,7 @@ angular.module('services.common.auth',['services.models.user','ngCordova.plugins
 
       var error = function(error, status, headers, config){
         if(Constants.DEBUGMODE){
-          console.log("error callback function ");
+          console.log("AuthService.error callback function ");
           console.log(error);
         }
 
@@ -95,6 +98,7 @@ angular.module('services.common.auth',['services.models.user','ngCordova.plugins
 
         self.updateUser(user, {set: true});
         
+        //set token on success
         $http.defaults.headers.common['X-Access-Token'] = token;
         $cordovaLocalStorage.setItem('sessionToken',token); 
         
@@ -103,7 +107,7 @@ angular.module('services.common.auth',['services.models.user','ngCordova.plugins
 
       var error = function(error, status, headers, config){
         if(Constants.DEBUGMODE){
-          console.log("error callback function ");
+          console.log("AuthService.error callback function ");
           console.log(error);
         }
 
@@ -123,7 +127,9 @@ angular.module('services.common.auth',['services.models.user','ngCordova.plugins
                       console.log("Url : "+_url);
                     }
 
+                  // we check if the callback page was reached
                   if(_url.indexOf(Constants.API.baseUrl+"/oauth/callback?type="+provider) > -1){
+                    // get the json output
                     browserWindow.executeScript({code: "document.body.innerHTML" },function(response){
                       if(Constants.DEBUGMODE){
                         console.log("browser Response sent we've reached the callack page");
@@ -136,23 +142,21 @@ angular.module('services.common.auth',['services.models.user','ngCordova.plugins
             );
         });
 
+        // function called when the browser is closed
         var _browserOnClose = function(output){
+          // stripping the html tags out the html response, we only want the json output
+          var _response = JSON.parse(output.response.toString().replace(/(<([^>]+)>)/ig,""));
+          
           if(Constants.DEBUGMODE){
-            console.log("Displaying the output outside");
             console.log("==========URL==============");
             console.log(output.url.toString());
 
             console.log("==========RESPONSE==============");
             console.log(output.response.toString());
 
-            
-            console.log("==========PARSED RESPONSE==============");
+            console.log(_response);
           }
-
-          // stripping the html tags out the html response, we only want the json part.
-          var _response = JSON.parse(output.response.toString().replace(/(<([^>]+)>)/ig,""));
-          console.log(_response);
-
+          
           if(_response.payload.token &&  _response.payload.user){
             success(_response);
           }else{

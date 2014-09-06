@@ -18,22 +18,23 @@
           </div>
 
           <div class="author-info centerBlock">
-              <h1>{{user.name}}</h1>
-              
+                    <h1 ng-if="user.name">
+                      {{user.name}}
+                    </h1>
+                    <h1 ng-if="user.name == ''">
+                      {{user.username}}
+                    </h1>
+                    
           </div>
         </ion-item>
         
-        <ion-item class="custom-menu-item settings-item" nav-clear menu-close href="#/app/profile/settings">
-          SETTINGS
-        </ion-item>
-
-        <ion-item class="custom-menu-item messages-item" nav-clear menu-close href="#/app/users">
+        <ion-item class="custom-menu-item users-item" nav-clear menu-close href="#/app/users">
           USERS
         </ion-item>
         
       </ion-list>
       
-      <div class="custom-menu-item menu-logout" nav-clear menu-close ng-click="logout()">
+      <div class="padding custom-menu-item menu-logout" nav-clear menu-close ng-click="logout()">
         <a class="item-content">
           SIGN OUT
         </a>

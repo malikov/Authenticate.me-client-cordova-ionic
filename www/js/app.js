@@ -5,12 +5,11 @@ angular.module('AuthenticateMe', [
   'controllers.main',
   'controllers.auth',
   'controllers.profile',
-  'controllers.thread',
+  'controllers.users',
+  'controllers.users.profile',
   'services.common.constants',
   'services.common.auth',
   'components.http-auth-interceptor',
-  'directives.file',
-  'ngResource',
   'ngCordova.plugins.network'
 ])
 
@@ -47,9 +46,11 @@ angular.module('AuthenticateMe', [
   });
   
 
+  // init Authentication service
   AuthService.init();
 
   $rootScope.$on('event:auth-loginRequired', function() {
+    //if login is required redirect to the app.start page
     AuthService.resetCookie();
     $state.go('app.start');
   });
@@ -60,6 +61,7 @@ angular.module('AuthenticateMe', [
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
+  // routing 
   .state('app', {
       url: "/app",
       abstract: true,
@@ -67,6 +69,7 @@ angular.module('AuthenticateMe', [
       controller: 'AppCtrl'
   })
 
+  // starting page
   .state('app.start', {
       url: "/start",
       views: {
@@ -91,7 +94,88 @@ angular.module('AuthenticateMe', [
       ]
   })
 
-  // authentication path
+  // users page
+  .state('app.users', {
+      url: "/users",
+      views: {
+        'content@app': {
+          controller: 'UsersCtrl',
+          templateUrl: "templates/users/index.html"
+        }
+      },
+      resolve : {
+        CtrlFilter : function(){
+          return {
+            _params : {}
+          };
+        }
+      },
+      onEnter: [
+        'AuthService',
+        'Constants',
+        '$stateParams',
+        '$state',
+        function(AuthService, Constants, $stateParams, $state){
+          if(Constants.DEBUGMODE){
+            console.log('profile.users -- onEnter');
+          }
+
+          if(!AuthService.isLoggedIn()){
+            if(Constants.DEBUGMODE){
+              console.log("User is not loggedIn");
+            }
+            return $state.go('app.auth');
+          }
+        }
+      ],
+      onExit : [
+        'Constants', 
+        function(Constants){
+          if(Constants.DEBUGMODE){
+            console.log('Exiting profile.users state');
+          }
+        }
+      ]
+  })
+
+  // users/:id profile page
+  .state('app.users.profile', {
+      url: "/:id",
+      views: {
+        'content@app': {
+          controller: 'UserCtrl',
+          templateUrl: "templates/users/profile.html"
+        }
+      },
+      onEnter: [
+        'AuthService',
+        'Constants',
+        '$stateParams',
+        '$state',
+        function(AuthService, Constants, $stateParams, $state){
+          if(Constants.DEBUGMODE){
+            console.log('profile.users -- onEnter');
+          }
+
+          if(!AuthService.isLoggedIn()){
+            if(Constants.DEBUGMODE){
+              console.log("User is not loggedIn");
+            }
+            return $state.go('app.auth');
+          }
+        }
+      ],
+      onExit : [
+        'Constants', 
+        function(Constants){
+          if(Constants.DEBUGMODE){
+            console.log('Exiting profile.users state');
+          }
+        }
+      ]
+  })
+
+  // authentication page
   .state('app.auth', {
       url: "/auth",
       views: {
@@ -128,32 +212,7 @@ angular.module('AuthenticateMe', [
       ]
   })
 
-  .state('app.auth.login', {
-    url: "/login",
-    views: {
-      'content@app': {
-        controller: 'AuthCtrl',
-        templateUrl: "templates/auth/login.html"
-      }
-    },
-    onEnter: [
-        'Constants',
-        '$stateParams',
-        function(Constants,$stateParams){
-          if(Constants.DEBUGMODE){
-            console.log('auth.login -- onEnter');
-          }
-        }
-    ],
-    onExit : [
-        'Constants', 
-        function(Constants){
-          if(Constants.DEBUGMODE){
-            console.log('Exiting state auth.login');
-          }
-        }
-    ]
-  })
+  // signup page
   .state('app.auth.signup', {
     url: "/signup",
     views: {
@@ -181,34 +240,8 @@ angular.module('AuthenticateMe', [
         }
     ]
   })
-  .state('app.auth.info', {
-    url: "/info",
-    views: {
-      'content@app': {
-        controller: 'AuthCtrl',
-        templateUrl: "templates/auth/info.html"
-      }
-    },
-    onEnter: [
-        'Constants',
-        '$stateParams',
-        function(Constants,$stateParams){
-          if(Constants.DEBUGMODE){
-            console.log('auth.info -- onEnter');
-          }
-        }
-    ],
-    onExit : [
-        'Constants', 
-        function(Constants){
-          if(Constants.DEBUGMODE){
-            console.log('Exiting state auth.info');
-          }
-        }
-    ]
-  })
 
-  // profile routing
+  // profile page
   .state('app.profile', {
       url: "/profile",
       views: {
@@ -243,182 +276,9 @@ angular.module('AuthenticateMe', [
           }
         }
       ]
-  })
-  // profile settings
-  .state('app.profile.settings', {
-      url: "/settings",
-      views: {
-        'content@app': {
-          controller: 'ProfileCtrl',
-          templateUrl: "templates/profile/settings.html"
-        }
-      },
-      onEnter: [
-        'AuthService',
-        'Constants',
-        '$stateParams',
-        '$state',
-        function(AuthService, Constants, $stateParams, $state){
-          if(Constants.DEBUGMODE){
-            console.log('profile.settings -- onEnter');
-          }
-
-          if(!AuthService.isLoggedIn()){
-            if(Constants.DEBUGMODE){
-              console.log("User is loggedIn");
-            }
-            return $state.go('app.auth');
-          }
-        }
-      ],
-      onExit : [
-        'Constants', 
-        function(Constants){
-          if(Constants.DEBUGMODE){
-            console.log('Exiting profile.settings state');
-          }
-        }
-      ]
-  })
-
-
-  // profile messages
-  .state('app.threads', {
-      url: "/threads",
-      views: {
-        'content@app': {
-          controller: 'ThreadCtrl',
-          templateUrl: "templates/threads/index.html"
-        }
-      },
-      resolve : {
-        CtrlFilter : function(){
-          return {
-            _type : 'Threads',
-            _filter : 'byMe',
-            _params : {}
-          };
-        }
-      },
-      onEnter: [
-        'AuthService',
-        'Constants',
-        '$stateParams',
-        '$state',
-        function(AuthService, Constants, $stateParams, $state){
-          if(Constants.DEBUGMODE){
-            console.log('profile -- onEnter');
-          }
-
-          if(!AuthService.isLoggedIn()){
-            if(Constants.DEBUGMODE){
-              console.log("User is loggedIn");
-            }
-            return $state.go('app.auth');
-          }
-        }
-      ],
-      onExit : [
-        'Constants', 
-        function(Constants){
-          if(Constants.DEBUGMODE){
-            console.log('Exiting profile state');
-          }
-        }
-      ]
-  })
-
-  //
-  .state('app.threads.profile', {
-      url: "/profile",
-      views: {
-        'content@app': {
-          controller: 'ThreadCtrl',
-          templateUrl: "templates/profile/messages.html"
-        }
-      },
-      resolve : {
-        CtrlFilter : function(){
-          return {
-            _type : 'Threads',
-            _filter : 'byId',
-            _params : {resoure : 'resource url to filter'}
-          };
-        }
-      },
-      onEnter: [
-        'AuthService',
-        'Constants',
-        '$stateParams',
-        '$state',
-        function(AuthService, Constants, $stateParams, $state){
-          if(Constants.DEBUGMODE){
-            console.log('thread -- onEnter');
-          }
-
-          if(!AuthService.isLoggedIn()){
-            if(Constants.DEBUGMODE){
-              console.log("User is loggedIn");
-            }
-            return $state.go('app.auth');
-          }
-        }
-      ],
-      onExit : [
-        'Constants', 
-        function(Constants){
-          if(Constants.DEBUGMODE){
-            console.log('Exiting thread state');
-          }
-        }
-      ]
-  })
-  //specific thread with all messages
-  .state('app.threads.id', {
-      url: "/threads/:id",
-      views: {
-        'content@app': {
-          controller: 'ThreadCtrl',
-          templateUrl: "templates/threads/single.html"
-        }
-      },
-      resolve : {
-        CtrlFilter : function(){
-          return {
-            _type : 'Threads',
-            _filter : 'byId',
-            _params : {resoure : 'resource url to filter'}
-          };
-        }
-      },
-      onEnter: [
-        'AuthService',
-        'Constants',
-        '$stateParams',
-        '$state',
-        function(AuthService, Constants, $stateParams, $state){
-          if(Constants.DEBUGMODE){
-            console.log('thread -- onEnter');
-          }
-
-          if(!AuthService.isLoggedIn()){
-            if(Constants.DEBUGMODE){
-              console.log("User is loggedIn");
-            }
-            return $state.go('app.auth');
-          }
-        }
-      ],
-      onExit : [
-        'Constants', 
-        function(Constants){
-          if(Constants.DEBUGMODE){
-            console.log('Exiting thread state');
-          }
-        }
-      ]
-  })
-
+  });
+  
+  
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/start');
 })

@@ -1,7 +1,7 @@
 {
-  "name": "AuthenticateMe",
+  "name": "Authenticate.me",
   "version": "1.0.0",
-  "description": "Sample authentication app",
+  "description": "hybrid app server side authentication app",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^0.7.1",
