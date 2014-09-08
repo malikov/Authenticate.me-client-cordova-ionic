@@ -36,4 +36,18 @@ This should install all dependencies for the project.
 
 
 4. Add a platform
-Once the dependencies installed you'll need to add a platform (Warning this project has been tested for iOs and Android devices)
+
+Once the dependencies installed, you'll need to add a platform (Warning this project has been tested for iOs and Android devices ony)
+
+Run :
+```bash
+ ionic platform add android
+ ionic platform add ios
+```
+
+Then to build the project run:
+```bash
+ ionic run android
+ ionic run ios
+```
+
