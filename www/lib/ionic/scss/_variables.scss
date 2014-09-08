@@ -16,10 +16,7 @@ $dark:                            #444 !default;
 // Base
 // -------------------------------
 
-$font-family-benton-sans: "BentonSans", "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
-
 $font-family-sans-serif:          "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !default;
-
 $font-family-light-sans-serif:    "Helvetica Neue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !default;
 $font-family-serif:               Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:           Monaco, Menlo, Consolas, "Courier New", monospace !default;
@@ -91,7 +88,7 @@ $button-small-padding:            4px !default;
 $button-small-icon-size:          16px !default;
 
 $button-bar-button-font-size:     13px !default;
-$button-bar-button-height:        50px !default;
+$button-bar-button-height:        32px !default;
 $button-bar-button-padding:       8px !default;
 $button-bar-button-icon-size:     20px !default;
 
@@ -159,7 +156,7 @@ $button-default-active-border:    $button-stable-active-border !default;
 // Bars
 // -------------------------------
 
-$bar-height:                      60px !default;
+$bar-height:                      44px !default;
 $bar-title-font-size:             17px !default;
 $bar-padding-portrait:            5px !default;
 $bar-padding-landscape:           5px !default;
@@ -281,7 +278,7 @@ $tab-item-max-width:              150px !default;
 
 $tabs-striped-off-color: #000;
 $tabs-striped-off-opacity: 0.4;
-$tabs-striped-border-width: 4px;
+$tabs-striped-border-width: 2px;
 
 
 // Items
@@ -289,7 +286,7 @@ $tabs-striped-border-width: 4px;
 
 $item-font-size:                  16px !default;
 $item-border-width:               1px !default;
-$item-padding:                    15px !default;
+$item-padding:                    16px !default;
 
 $item-button-font-size:           18px !default;
 $item-button-line-height:         32px !default;
@@ -565,6 +562,27 @@ $modal-inset-mode-left:           20% !default;
 $modal-inset-mode-min-height:     240px !default;
 
 
+// Popovers
+// -------------------------------
+
+$popover-bg-color:                $light !default;
+$popover-backdrop-bg-active:      rgba(0,0,0,0.1) !default;
+$popover-backdrop-bg-inactive:    rgba(0,0,0,0) !default;
+$popover-width:                   220px !default;
+$popover-height:                  280px !default;
+$popover-large-break-point:       680px !default;
+$popover-large-width:             360px !default;
+
+$popover-box-shadow:              0 1px 3px rgba(0,0,0,0.4) !default;
+$popover-border-radius:           2px !default;
+
+$popover-box-shadow-ios:          0 0 40px rgba(0,0,0,0.08) !default;
+$popover-border-radius-ios:       10px !default;
+
+$popover-bg-color-android:        #fafafa !default;
+$popover-box-shadow-android:      0 2px 6px rgba(0,0,0,0.35) !default;
+
+
 // Grids
 // -------------------------------
 
@@ -663,6 +681,7 @@ $z-index-bar:                     10 !default;
 $z-index-bar-title:               0 !default;
 $z-index-bar-button:              1 !default;
 $z-index-item:                    2 !default;
+$z-index-item-reorder:            3 !default;
 $z-index-item-checkbox:           3 !default;
 $z-index-item-drag:               0 !default;
 $z-index-item-edit:               0 !default;
@@ -672,11 +691,14 @@ $z-index-item-reordering:         9 !default;
 $z-index-item-toggle:             3 !default;
 $z-index-loading:                 13 !default;
 $z-index-menu:                    0 !default;
+$z-index-menu-bar-header:         11 !default;
+$z-index-menu-scroll-content:     10 !default;
 $z-index-modal:                   10 !default;
 $z-index-pane:                    1 !default;
 $z-index-popup:                   12 !default;
+$z-index-popover:                 10 !default;
 $z-index-scroll-bar:              9999 !default;
-$z-index-scroll-content-false:    10 !default;
+$z-index-scroll-content-false:    11 !default;
 $z-index-slider-pager:            1 !default;
 $z-index-tabs:                    5 !default;
 $z-index-view:                    1 !default;
@@ -685,4 +707,4 @@ $z-index-view:                    1 !default;
 // Platform
 // -------------------------------
 
-$ios7-statusbar-height:           20px !default;
+$ios-statusbar-height:           20px !default;
