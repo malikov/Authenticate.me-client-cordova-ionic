@@ -51,3 +51,5 @@ Then to build the project run:
  ionic run ios
 ```
 
+5. CSS changes
+
