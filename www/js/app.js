@@ -5,8 +5,8 @@ angular.module('AuthenticateMe', [
   'controllers.main',
   'controllers.auth',
   'controllers.profile',
-  'controllers.users',
-  'controllers.users.profile',
+  /*'controllers.users',
+  'controllers.users.profile',*/
   'services.common.constants',
   'services.common.auth',
   'components.http-auth-interceptor',
@@ -56,25 +56,45 @@ angular.module('AuthenticateMe', [
 
   // on state change you want to check whether or not the state.
   // I'm trying to reach is protected 
-  
+  $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+    if(toState.authenticate && !AuthService.isLoggedIn()){
+      // User isn’t authenticated
+      $state.transitionTo("app.auth");
+      event.preventDefault(); 
+    }
+  });
 
 })
+
 .config(function($stateProvider, $urlRouterProvider) {
 
   // loging function
-  var _logPage = function(C, $state, $stateParams){
-    if(C.DEBUGMODE){
-      console.log("logging page");
-      console.log({
-        page : '',
-        state : $state,
-        params : $stateParams
-      })
-    }
-  }
+  var _onEnter =[
+    'Constants',
+    '$state',
+    '$stateParams',
+    function(C, $state, $stateParams){
+      if(C.DEBUGMODE){
+        console.log("Entering state : "+$state.current.name);
+        console.log({
+          currentState : $state.current,
+          url : $state.current.url,
+          route : $state.current.name,
+          params : $stateParams
+        })
+      }
+    }];
+
+    var _onExit =[
+    'Constants',
+    '$state',
+    function(C, $state){
+      if(C.DEBUGMODE){
+        console.log("Exiting state : "+$state.current.name);
+      }
+    }];
 
   $stateProvider
-
   // routing 
   .state('app', {
       url: "/app",
@@ -93,12 +113,8 @@ angular.module('AuthenticateMe', [
         }
       },
       authenticate : false,
-      onEnter:[
-        'Constants',
-        '$state',
-        '$stateParams',
-        _logPage
-      ]
+      onEnter: _onEnter,
+      onExit: _onExit
   })
   
   // authentication page
@@ -111,12 +127,8 @@ angular.module('AuthenticateMe', [
         }
       },
       authenticate : false, 
-      onEnter: [
-        'Constants',
-        '$state',
-        '$stateParams',
-        _logPage
-      ]
+      onEnter: _onEnter,
+      onExit: _onExit
   })
 
   // signup page
@@ -129,12 +141,8 @@ angular.module('AuthenticateMe', [
       }
     },
     authenticate : false, 
-    onEnter: [
-      'Constants',
-      '$state',
-      '$stateParams',
-      _logPage
-    ]
+    onEnter: _onEnter,
+    onExit : _onExit
   })
 
   // logged user's profile page
@@ -147,15 +155,12 @@ angular.module('AuthenticateMe', [
         }
       },
       authenticate : true, 
-      onEnter: [
-        'Constants',
-        '$state',
-        '$stateParams',
-        _logPage
-      ]
-  })
+      onEnter: _onEnter,
+      onExit : _onExit
+  });
 
   // users page
+  /*
   .state('app.users', {
       url: "/users",
       views: {
@@ -172,12 +177,8 @@ angular.module('AuthenticateMe', [
           };
         }
       },
-      onEnter: [
-        'Constants',
-        '$state',
-        '$stateParams',
-        _logPage
-      ]
+      onEnter: _onEnter,
+      onExit : _onExit
   })
 
   // users/:id profile page
@@ -190,13 +191,9 @@ angular.module('AuthenticateMe', [
         }
       },
       authenticate: true,
-      onEnter: [
-        'Constants',
-        '$state',
-        '$stateParams',
-        _logPage
-      ]
-  });
+      onEnter: _onEnter,
+      onExit : _onExit
+  });*/
   
   
   // if none of the above states are matched, use this as the fallback

@@ -13,7 +13,6 @@ angular.module('services.common.constants',[])
   var _API = {
   	baseUrl: "http://authenticate-app-me.herokuapp.com"
     //baseUrl: "http://localhost:3000"
-    //baseUrl: "http://192.168.0.105:3000"
   }
 
   var _img = {
@@ -22,8 +21,8 @@ angular.module('services.common.constants',[])
   }
   
   var constants = {
-    DEBUGMODE : false,
-    SHOWBROADCAST_EVENTS :true,
+    DEBUGMODE : true,
+    SHOWBROADCAST_EVENTS : true,
     API: _API,
     IMG: _img,
   };

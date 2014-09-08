@@ -35,18 +35,9 @@ function($cordovaCamera, $ionicActionSheet, $ionicModal, $ionicViewService, $ion
 		console.log($stateParams);
 	}
 	
-
-	if(!AuthService.isLoggedIn()){
-		$ionicLoading.hide();
-		return $state.go('app.start');
-	}
-	
+	// putting the current authenticated user in the $scope.user
 	$scope.user = AuthService.currentUser.info;
-	$scope.tmp = {
-		profileBg : null,
-		avatar: null
-	}
-
+	
 	if(AuthService.currentUser.info.avatar === ""){
 		$scope.user.avatar = Constants.IMG.avatar;
 	}
@@ -54,7 +45,6 @@ function($cordovaCamera, $ionicActionSheet, $ionicModal, $ionicViewService, $ion
 	if(AuthService.currentUser.info.profileBg === ""){
 		$scope.user.profileBg = Constants.IMG.profile_bg;
 	}
-
 	
 	//data for the form
 	$scope.updateData = angular.copy($scope.user);
@@ -71,27 +61,9 @@ function($cordovaCamera, $ionicActionSheet, $ionicModal, $ionicViewService, $ion
     	$scope.modal.hide();
   	});
 
-	$scope.deleteImg = function(img){
-		if(img !== null){
-			img.delete().then(function(){
-				if(Constants.DEBUGMODE){
-					console.log("image deleted");
-				}
-			}, function(){
-				if(Constants.DEBUGMODE){
-					console.log("error deleting");
-				}
-			})
-		}
-	}
-
 	// Triggered in the login modal to close it
 	$scope.closeEdit = function(saved) {
 	  if(!saved){
-	  	
-	  	$scope.deleteImg($scope.tmp.avatar);
-		$scope.deleteImg($scope.tmp.profileBg);
-
 	  	angular.copy($scope.updateData, $scope.user);
 	  }
 
@@ -102,8 +74,6 @@ function($cordovaCamera, $ionicActionSheet, $ionicModal, $ionicViewService, $ion
 	$scope.openEdit = function() {
 	  $scope.modal.show();
 	};
-
-	
 
 	$scope.goTo = function(state){
 		if(state === 'edit'){
