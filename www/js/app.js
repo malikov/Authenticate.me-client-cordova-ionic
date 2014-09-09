@@ -57,9 +57,9 @@ angular.module('AuthenticateMe', [
   // on state change you want to check whether or not the state.
   // I'm trying to reach is protected 
   $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
-    /*$ionicLoading.show({
+    $ionicLoading.show({
       template: 'Loading...'
-    });*/
+    });
 
     if(!toState.authenticate && AuthService.isLoggedIn()){
       // User isn’t authenticated
@@ -73,7 +73,7 @@ angular.module('AuthenticateMe', [
   });
 
   $rootScope.$on("$stateChangeSuccess", function(event, toState, toParams, fromState, fromParams){
-    // use directive for the global loading thingy
+    $ionicLoading.hide();
   });
 
 })

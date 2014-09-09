@@ -19,8 +19,7 @@ angular.module('controllers.users', ['services.models.collection','services.mode
 	'$stateParams',
 	'Constants',
 	'AuthService',
-	'CtrlFilter',
-function(ModelCollection, UserModel, $ionicLoading, $timeout, $scope,$state, $stateParams, Constants, AuthService, CtrlFilter) {
+function(ModelCollection, UserModel, $ionicLoading, $timeout, $scope,$state, $stateParams, Constants, AuthService) {
 	//show loading gif
 	
 	if(Constants.DEBUGMODE){
@@ -46,19 +45,12 @@ function(ModelCollection, UserModel, $ionicLoading, $timeout, $scope,$state, $st
   		var _params = angular.extend(params,{
   			prev: true
   		})
-  		$ionicLoading.show({
-	    	template: 'Loading users...'
-	   	});
+  		
   		return modelCollection.get(params);
   	}
 
-  	$ionicLoading.show({
-	    template: 'Loading users...'
-	});
-
   	//loading and setting the collection
-  	$scope.loadItems(CtrlFilter._params).then(function(response){
-  		$ionicLoading.hide();
+  	$scope.loadItems().then(function(response){
   		$scope.collection = modelCollection.items;
   	}, function(error){
   		if(Constants.DEBUGMODE){
