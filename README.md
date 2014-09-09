@@ -1,7 +1,7 @@
 Authenticate.me app front end (ionic, angularjs, cordova)
 ================================================================
 
-A starting project to achieve server side authentication for hybrid apps. This is the front end. You can either create your server side api based on the following blog post : [http://www.frnchnrd.com/blog/](blogpost) or reuse the [https://github.com/malikov/Authenticate.me-Node-Server](authenticate.me server nodejs codebase).
+A starting project to achieve server side authentication for hybrid apps. This is the front end. You can either create your server side api based on the following blog post : [http://www.frnchnrd.com/blog/](http://www.frnchnrd.com/blog/) or reuse the [authenticate.me server nodejs codebase](https://github.com/malikov/Authenticate.me-Node-Server).
 
 ## Using this project
 
@@ -13,7 +13,7 @@ make sure both [http://ionicframework.com/](ionic) and cordova are installed on 
  npm install -g cordova ionic
 ```
 
-Note : if npm isn't defined you'll need to install [http://nodejs.org/](node)
+Note : if npm isn't defined you'll need to install [node](http://nodejs.org/)
 
 2. Clone this repo
 ```bash
