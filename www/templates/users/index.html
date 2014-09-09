@@ -1,0 +1,26 @@
+<ion-view title="Users" hide-back-button="true">
+ <ion-nav-buttons side="left">
+   <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+ </ion-nav-buttons>
+ 
+  <ion-content class="has-header users-page">
+  	<div class="list">
+	    <a 	class="item item-avatar user-list-item"
+	    	collection-repeat="user in collection"
+      		collection-item-width="'100%'"
+      		collection-item-height="90" href="#/app/users/{{user.objectId}}">
+	      <img class="avatar" src="{{user.avatar}}">
+	      <h2 class="name" ng-if="user.name">
+            {{user.name}}
+          </h2>
+          <h2 class="name" ng-if="user.name == ''">
+            {{user.username}}
+          </h2>
+          <h2 class="username" ng-if="user.name">
+           	@{{user.username}}
+          </h2>
+	      <p class="location">{{user.location}}</p>
+	    </a>
+	</div>
+  </ion-content>
+</ion-view>

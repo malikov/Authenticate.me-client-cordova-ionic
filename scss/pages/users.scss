@@ -1,0 +1,52 @@
+/*
+	Users page
+*/
+
+.users-page {
+	@include content-bg(cover, #ffffff);
+	background: #383a4c;
+
+	.list{
+		.item-avatar{
+			width: 100%;
+
+			&.user-list-item{
+				height: 90px;
+				background: transparent;
+				border-width: 0 0 1px 0;
+				border-color: rgba(0,0,0,0.2);
+				color: #ffffff;
+				padding-left: 80px;
+
+				&.activated{
+					background : rgba(0,0,0,0.5);
+				}
+
+				.avatar {
+					border-radius: 50%;
+					top: 18px;
+					max-width: 50px;
+					max-height: 50px;
+				}
+
+				.name {
+					color: #ffffff;
+					font-size:14px;
+				}
+				
+				.username{
+					color: #ffffff;
+					font-size:13px;
+				}
+
+				.location {
+					color: #babcc6;
+					font-size:13px;
+				}
+			}
+		}
+	}
+}
+	
+
+
