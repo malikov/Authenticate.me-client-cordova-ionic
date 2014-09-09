@@ -49,8 +49,13 @@ function(ModelCollection, UserModel, $ionicLoading, $timeout, $scope,$state, $st
   		return modelCollection.get(params);
   	}
 
+  	$ionicLoading.show({
+	    template: 'Loading users...'
+	});
+
   	//loading and setting the collection
-  	$scope.loadItems().then(function(response){
+  	$scope.loadItems(CtrlFilter._params).then(function(response){
+  		$ionicLoading.hide();
   		$scope.collection = modelCollection.items;
   	}, function(error){
   		if(Constants.DEBUGMODE){

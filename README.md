@@ -5,9 +5,9 @@ A starting project to achieve server side authentication for hybrid apps. This i
 
 ## Using this project
 
-1. Ionic / Cordova 
+### 1. Ionic / Cordova 
 
-make sure both [http://ionicframework.com/](ionic) and cordova are installed on your machine if not then run : 
+make sure both [ionic](http://ionicframework.com/) and cordova are installed on your machine if not then run : 
 
 ```bash
  npm install -g cordova ionic
@@ -15,7 +15,7 @@ make sure both [http://ionicframework.com/](ionic) and cordova are installed on 
 
 Note : if npm isn't defined you'll need to install [node](http://nodejs.org/)
 
-2. Clone this repo
+### 2. Clone this repo
 ```bash
  git clone https://github.com/malikov/Authenticate.me-client-cordova-ionic.git
 ```
@@ -25,7 +25,7 @@ Then navigate to the repo :
  cd Authenticate.me-client-cordova-ionic
 ```
 
-3. Dependencies
+### 3. Dependencies
 
 Run :
 ```bash
@@ -35,7 +35,7 @@ Run :
 This should install all dependencies for the project.
 
 
-4. Add a platform
+### 4. Add a platform
 
 Once the dependencies installed, you'll need to add a platform (Warning this project has been tested for iOs and Android devices ony)
 
@@ -50,6 +50,3 @@ Then to build the project run:
  ionic run android
  ionic run ios
 ```
-
-5. CSS changes
-
