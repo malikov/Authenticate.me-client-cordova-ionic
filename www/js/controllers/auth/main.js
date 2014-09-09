@@ -37,14 +37,6 @@ function($ionicLoading,$ionicNavBarDelegate,$ionicPopup, $timeout, $scope,$state
 	}
 
 	
-	//check if user is loggedin first
-	if(AuthService.isLoggedIn()){
-		if(Constants.DEBUGMODE){
-			console.log("User is loggedIn");
-		}
-		return $state.go('app.profile');
-	}
-
 	// function for loging the user
 	$scope.authenticateUser = function(provider){
 		var error = function(error){

@@ -5,8 +5,8 @@ angular.module('AuthenticateMe', [
   'controllers.main',
   'controllers.auth',
   'controllers.profile',
-  'controllers.users',
-  'controllers.users.profile',
+  /*'controllers.users',
+  'controllers.users.profile',*/
   'services.common.constants',
   'services.common.auth',
   'components.http-auth-interceptor',
@@ -45,7 +45,6 @@ angular.module('AuthenticateMe', [
 
   });
   
-
   // init Authentication service
   AuthService.init();
 
@@ -55,12 +54,47 @@ angular.module('AuthenticateMe', [
     $state.go('app.start');
   });
 
-
+  // on state change you want to check whether or not the state.
+  // I'm trying to reach is protected 
+  $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+    if(toState.authenticate && !AuthService.isLoggedIn()){
+      // User isn’t authenticated
+      $state.transitionTo("app.auth");
+      event.preventDefault(); 
+    }
+  });
 
 })
-.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
 
+.config(function($stateProvider, $urlRouterProvider) {
+
+  // loging function
+  var _onEnter =[
+    'Constants',
+    '$state',
+    '$stateParams',
+    function(C, $state, $stateParams){
+      if(C.DEBUGMODE){
+        console.log("Entering state : "+$state.current.name);
+        console.log({
+          currentState : $state.current,
+          url : $state.current.url,
+          route : $state.current.name,
+          params : $stateParams
+        })
+      }
+    }];
+
+    var _onExit =[
+    'Constants',
+    '$state',
+    function(C, $state){
+      if(C.DEBUGMODE){
+        console.log("Exiting state : "+$state.current.name);
+      }
+    }];
+
+  $stateProvider
   // routing 
   .state('app', {
       url: "/app",
@@ -78,103 +112,11 @@ angular.module('AuthenticateMe', [
           templateUrl: "templates/index.html"
         }
       },
-      onEnter:[
-        'AuthService',
-        'Constants',
-        '$state',
-        function(AuthService,Constants, $state){
-          //check if user is loggedin first
-          if(AuthService.isLoggedIn()){
-            if(Constants.DEBUGMODE){
-              console.log("User is loggedIn");
-            }
-            return $state.go('app.profile');
-          }
-        }
-      ]
+      authenticate : false,
+      onEnter: _onEnter,
+      onExit: _onExit
   })
-
-  // users page
-  .state('app.users', {
-      url: "/users",
-      views: {
-        'content@app': {
-          controller: 'UsersCtrl',
-          templateUrl: "templates/users/index.html"
-        }
-      },
-      resolve : {
-        CtrlFilter : function(){
-          return {
-            _params : {}
-          };
-        }
-      },
-      onEnter: [
-        'AuthService',
-        'Constants',
-        '$stateParams',
-        '$state',
-        function(AuthService, Constants, $stateParams, $state){
-          if(Constants.DEBUGMODE){
-            console.log('profile.users -- onEnter');
-          }
-
-          if(!AuthService.isLoggedIn()){
-            if(Constants.DEBUGMODE){
-              console.log("User is not loggedIn");
-            }
-            return $state.go('app.auth');
-          }
-        }
-      ],
-      onExit : [
-        'Constants', 
-        function(Constants){
-          if(Constants.DEBUGMODE){
-            console.log('Exiting profile.users state');
-          }
-        }
-      ]
-  })
-
-  // users/:id profile page
-  .state('app.users.profile', {
-      url: "/:id",
-      views: {
-        'content@app': {
-          controller: 'UserCtrl',
-          templateUrl: "templates/users/profile.html"
-        }
-      },
-      onEnter: [
-        'AuthService',
-        'Constants',
-        '$stateParams',
-        '$state',
-        function(AuthService, Constants, $stateParams, $state){
-          if(Constants.DEBUGMODE){
-            console.log('profile.users -- onEnter');
-          }
-
-          if(!AuthService.isLoggedIn()){
-            if(Constants.DEBUGMODE){
-              console.log("User is not loggedIn");
-            }
-            return $state.go('app.auth');
-          }
-        }
-      ],
-      onExit : [
-        'Constants', 
-        function(Constants){
-          if(Constants.DEBUGMODE){
-            console.log('Exiting profile.users state');
-          }
-        }
-      ]
-  })
-
+  
   // authentication page
   .state('app.auth', {
       url: "/auth",
@@ -183,33 +125,10 @@ angular.module('AuthenticateMe', [
           controller: 'AuthCtrl',
           templateUrl: "templates/auth/index.html"
         }
-      }, 
-      onEnter: [
-        'AuthService',
-        'Constants',
-        '$stateParams',
-        '$state',
-        function(AuthService, Constants, $stateParams, $state){
-          if(Constants.DEBUGMODE){
-            console.log('auth -- onEnter');
-          }
-
-          if(AuthService.isLoggedIn()){
-            if(Constants.DEBUGMODE){
-              console.log("User is loggedIn");
-            }
-            return $state.go('app.profile');
-          }
-        }
-      ],
-      onExit : [
-          'Constants', 
-          function(Constants){
-            if(Constants.DEBUGMODE){
-              console.log('Exiting state auth');
-            }
-          }
-      ]
+      },
+      authenticate : false, 
+      onEnter: _onEnter,
+      onExit: _onExit
   })
 
   // signup page
@@ -221,27 +140,12 @@ angular.module('AuthenticateMe', [
         templateUrl: "templates/auth/signup.html"
       }
     },
-    onEnter: [
-        'Constants',
-        '$stateParams',
-        function(Constants,$stateParams){
-          if(Constants.DEBUGMODE){
-            console.log('auth.signup -- onEnter');
-            console.log($stateParams);
-          }
-        }
-    ],
-    onExit : [
-        'Constants', 
-        function(Constants){
-          if(Constants.DEBUGMODE){
-            console.log('Exiting state auth.signup');
-          }
-        }
-    ]
+    authenticate : false, 
+    onEnter: _onEnter,
+    onExit : _onExit
   })
 
-  // profile page
+  // logged user's profile page
   .state('app.profile', {
       url: "/profile",
       views: {
@@ -250,33 +154,46 @@ angular.module('AuthenticateMe', [
           templateUrl: "templates/profile/index.html"
         }
       },
-      onEnter: [
-        'AuthService',
-        'Constants',
-        '$stateParams',
-        '$state',
-        function(AuthService, Constants, $stateParams, $state){
-          if(Constants.DEBUGMODE){
-            console.log('profile -- onEnter');
-          }
-
-          if(!AuthService.isLoggedIn()){
-            if(Constants.DEBUGMODE){
-              console.log("User is loggedIn");
-            }
-            return $state.go('app.auth');
-          }
-        }
-      ],
-      onExit : [
-        'Constants', 
-        function(Constants){
-          if(Constants.DEBUGMODE){
-            console.log('Exiting profile state');
-          }
-        }
-      ]
+      authenticate : true, 
+      onEnter: _onEnter,
+      onExit : _onExit
   });
+
+  // users page
+  /*
+  .state('app.users', {
+      url: "/users",
+      views: {
+        'content@app': {
+          controller: 'UsersCtrl',
+          templateUrl: "templates/users/index.html",
+        }
+      },
+      authenticate: true,
+      resolve : {
+        CtrlFilter : function(){
+          return {
+            _params : {}
+          };
+        }
+      },
+      onEnter: _onEnter,
+      onExit : _onExit
+  })
+
+  // users/:id profile page
+  .state('app.users.profile', {
+      url: "/:id",
+      views: {
+        'content@app': {
+          controller: 'UserCtrl',
+          templateUrl: "templates/users/profile.html"
+        }
+      },
+      authenticate: true,
+      onEnter: _onEnter,
+      onExit : _onExit
+  });*/
   
   
   // if none of the above states are matched, use this as the fallback
