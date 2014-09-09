@@ -28,13 +28,6 @@ function(ModelCollection, UserModel, $ionicLoading, $timeout, $scope,$state, $st
 		console.log($stateParams);
 	}
 	
-
-	if(!AuthService.isLoggedIn()){
-		$ionicLoading.hide();
-		return $state.go('app.start');
-	}
-	
-
 	$scope.$on('event:auth-loginRequired', function() {
 		$ionicLoading.hide();
   	});
@@ -59,13 +52,10 @@ function(ModelCollection, UserModel, $ionicLoading, $timeout, $scope,$state, $st
   		return modelCollection.get(params);
   	}
 
-  	$scope.showUser = function(userId){
-  		return $state.go('app.start');
-  	}
-  	
   	$ionicLoading.show({
 	    template: 'Loading users...'
 	});
+
   	//loading and setting the collection
   	$scope.loadItems(CtrlFilter._params).then(function(response){
   		$ionicLoading.hide();
@@ -76,4 +66,11 @@ function(ModelCollection, UserModel, $ionicLoading, $timeout, $scope,$state, $st
   		}
   	});
 
+  	$scope.$on("$destroy", function() {
+  		if(Constants.DEBUGMODE){
+  			console.log('destroying UsersCtrl');
+  		}
+
+  		modelCollection = null;
+    });
 }])

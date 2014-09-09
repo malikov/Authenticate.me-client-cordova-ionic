@@ -124,5 +124,13 @@ function($cordovaCamera, $ionicActionSheet, $ionicModal, $ionicViewService, $ion
 		AuthService.currentUser.update().then(success,error);
 	}
 
+	$scope.$on("$destroy", function() {
+  		if(Constants.DEBUGMODE){
+  			console.log('destroying ProfileCtrl');
+  		}
+
+  		
+    });
+
 	$ionicLoading.hide();
 }])

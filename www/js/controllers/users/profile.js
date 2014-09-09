@@ -52,4 +52,11 @@ function(UserModel, $ionicModal, $ionicLoading, $timeout, $scope,$state, $stateP
 		$ionicLoading.hide();
   	});
 
+	$scope.$on("$destroy", function() {
+  		if(Constants.DEBUGMODE){
+  			console.log('destroying UserCtrl');
+  		}
+
+  		user = null;
+    });
 }])
