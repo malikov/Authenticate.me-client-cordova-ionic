@@ -69,7 +69,7 @@ angular.module('AuthenticateMe', [
 .config(function($stateProvider, $urlRouterProvider) {
 
   // loging function
-  var _onEnter =[
+  var _onEnter = [
     'Constants',
     '$state',
     '$stateParams',
@@ -85,14 +85,53 @@ angular.module('AuthenticateMe', [
       }
     }];
 
-    var _onExit =[
+  var _onExit = [
     'Constants',
     '$state',
     function(C, $state){
       if(C.DEBUGMODE){
         console.log("Exiting state : "+$state.current.name);
       }
-    }];
+  }];
+
+  var _ctrlFilter = function(options){
+    var opts = angular.extend({
+      dependencies : ['Constants','$state','$stateParams'],
+      type : 'data' // or params
+      data : {}
+    }, options);
+
+    opts.dependencies.push(function(C, $state, $stateParams, Model){
+      if(opts.type === 'data'){
+        // if we need to fetch some data get the model and $stageParams id then get the data
+        var model = new Model();
+        model.get($stateParams.id).then(function(response){
+          return {
+            type: 'data',
+            params : {
+              model: model.info
+            }
+          }
+        }, function(error){
+          if(Constants.DEBUGMODE){
+            console.log("error fetching user");
+          }
+
+          return {}
+        });
+      }else{
+        // otherwise we're merely passing in the data
+        return {
+          type: 'data',
+          params : {
+            id: $stateParams.id
+          }
+        }
+      }
+    });
+
+    return opts.dependencies;
+  }
 
   $stateProvider
   // routing 
@@ -190,6 +229,12 @@ angular.module('AuthenticateMe', [
         }
       },
       authenticate: true,
+      resolve : {
+        CtrlFilter : _ctrlFilter({
+          dependencies : ['Constants', '$state', '$stateParams', 'UserModel'],
+          type : 'data'
+        }) 
+      },
       onEnter: _onEnter,
       onExit : _onExit
   });
