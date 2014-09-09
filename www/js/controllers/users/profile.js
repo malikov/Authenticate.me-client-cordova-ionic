@@ -31,14 +31,14 @@ function(UserModel, $ionicModal, $ionicLoading, $timeout, $scope,$state, $stateP
 
 	var user = new UserModel();
 	user.get($stateParams.id).then(function(response){
-		$scope.user = user.info;
+		$scope.profile = user.info;
 		
 		if(user.info.avatar === ""){
-			$scope.user.avatar = Constants.IMG.avatar;
+			$scope.profile.avatar = Constants.IMG.avatar;
 		}
 
 		if(user.info.profileBg === ""){
-			$scope.user.profileBg = Constants.IMG.profile_bg;
+			$scope.profile.profileBg = Constants.IMG.profile_bg;
 		}
 
 		$ionicLoading.hide();

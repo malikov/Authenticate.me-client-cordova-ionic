@@ -1,25 +1,25 @@
 <ion-view title="Profile">
   <ion-content class="has-header profile-page" scroll="false">
    
-    <div class="profile-img-wrapper  profile-content" style="background-image: url({{user.profileBg}});">  
+    <div class="profile-img-wrapper  profile-content" style="background-image: url({{profile.profileBg}});">  
       <ion-slide-box on-slide-changed="slideHasChanged($index)">
           <ion-slide>
             <div class="avatar-section">
               <div class="content">
                   <div class="avatar-icon">
-                    <div class="avatar-img" style="background-image: url({{user.avatar}});">
+                    <div class="avatar-img" style="background-image: url({{profile.avatar}});">
                     </div>
                   </div>
 
                   <div class="info-section">
-                    <h1 ng-if="user.name">
-                      {{user.name}}
+                    <h1 ng-if="profile.name">
+                      {{profile.name}}
                     </h1>
                     <h1 ng-if="user.name == ''">
-                      {{user.username}}
+                      {{profile.username}}
                     </h1>
                     <h2 ng-if="user.name">
-                      @{{user.username}}
+                      @{{profile.username}}
                     </h2>
                   </div>
               </div>
@@ -29,13 +29,13 @@
               <div class="avatar-section avatar-bio-section">
                   <div class="content info-section">
                     <p>
-                     {{user.bio}}
+                     {{profile.bio}}
                     </p>
                     <p>
-                     {{user.website}}
+                     {{profile.website}}
                     </p>
                     <h2 class="city">
-                      {{user.location}}
+                      {{profile.location}}
                     </h2>
                   </div>
               </div>
