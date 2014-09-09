@@ -13,7 +13,7 @@ angular.module('AuthenticateMe', [
   'ngCordova.plugins.network'
 ])
 
-.run(function($ionicPlatform, AuthService, Constants, $state, $rootScope,$http,$cordovaNetwork) {
+.run(function($ionicPlatform, AuthService, Constants, $state, $rootScope,$http,$cordovaNetwork,$ionicLoading) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -57,11 +57,23 @@ angular.module('AuthenticateMe', [
   // on state change you want to check whether or not the state.
   // I'm trying to reach is protected 
   $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
-    if(toState.authenticate && !AuthService.isLoggedIn()){
+    /*$ionicLoading.show({
+      template: 'Loading...'
+    });*/
+
+    if(!toState.authenticate && AuthService.isLoggedIn()){
+      // User isn’t authenticated
+      $state.transitionTo("app.profile");
+      event.preventDefault(); 
+    }else if(toState.authenticate && !AuthService.isLoggedIn()){
       // User isn’t authenticated
       $state.transitionTo("app.auth");
       event.preventDefault(); 
     }
+  });
+
+  $rootScope.$on("$stateChangeSuccess", function(event, toState, toParams, fromState, fromParams){
+    // use directive for the global loading thingy
   });
 
 })
@@ -94,40 +106,51 @@ angular.module('AuthenticateMe', [
       }
   }];
 
+  // quick hack to load before controller gets called
   var _ctrlFilter = function(options){
     var opts = angular.extend({
       dependencies : ['Constants','$state','$stateParams'],
-      type : 'data' // or params
+      type : 'data', // or params
       data : {}
     }, options);
 
-    opts.dependencies.push(function(C, $state, $stateParams, Model){
+    opts.dependencies.push(function(C, $state, $stateParams, $q, Model){
+      var deferred = $q.defer();
+
       if(opts.type === 'data'){
         // if we need to fetch some data get the model and $stageParams id then get the data
         var model = new Model();
         model.get($stateParams.id).then(function(response){
-          return {
+          if(C.DEBUGMODE){
+            console.log("success fetching controller data");
+          }
+
+          return deferred.resolve({
             type: 'data',
             params : {
               model: model.info
             }
-          }
+          });
+
         }, function(error){
-          if(Constants.DEBUGMODE){
-            console.log("error fetching user");
+          if(C.DEBUGMODE){
+            console.log("error fetching controller data");
           }
 
-          return {}
+          return deferred.reject();
         });
+
       }else{
         // otherwise we're merely passing in the data
-        return {
+        return deferred.resolve({
           type: 'data',
           params : {
             id: $stateParams.id
           }
-        }
+        });
       }
+
+      return deferred.promise;
     });
 
     return opts.dependencies;
@@ -208,13 +231,6 @@ angular.module('AuthenticateMe', [
         }
       },
       authenticate: true,
-      resolve : {
-        CtrlFilter : function(){
-          return {
-            _params : {}
-          };
-        }
-      },
       onEnter: _onEnter,
       onExit : _onExit
   })
@@ -231,7 +247,7 @@ angular.module('AuthenticateMe', [
       authenticate: true,
       resolve : {
         CtrlFilter : _ctrlFilter({
-          dependencies : ['Constants', '$state', '$stateParams', 'UserModel'],
+          dependencies : ['Constants', '$state', '$stateParams','$q', 'UserModel'],
           type : 'data'
         }) 
       },

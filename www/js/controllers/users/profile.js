@@ -29,6 +29,7 @@ function(CtrlFilter, UserModel, $ionicModal, $ionicLoading, $timeout, $scope,$st
 	
 	$scope.profile = user.info;
 	
+
 	$scope.$on("$destroy", function() {
   		if(Constants.DEBUGMODE){
   			console.log('destroying UserCtrl');
