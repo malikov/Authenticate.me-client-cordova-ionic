@@ -5,8 +5,8 @@ angular.module('AuthenticateMe', [
   'controllers.main',
   'controllers.auth',
   'controllers.profile',
-  /*'controllers.users',
-  'controllers.users.profile',*/
+  'controllers.users',
+  'controllers.users.profile',
   'services.common.constants',
   'services.common.auth',
   'components.http-auth-interceptor',
@@ -157,10 +157,9 @@ angular.module('AuthenticateMe', [
       authenticate : true, 
       onEnter: _onEnter,
       onExit : _onExit
-  });
+  })
 
   // users page
-  /*
   .state('app.users', {
       url: "/users",
       views: {
@@ -193,7 +192,7 @@ angular.module('AuthenticateMe', [
       authenticate: true,
       onEnter: _onEnter,
       onExit : _onExit
-  });*/
+  });
   
   
   // if none of the above states are matched, use this as the fallback

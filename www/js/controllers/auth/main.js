@@ -90,6 +90,11 @@ function($ionicLoading,$ionicNavBarDelegate,$ionicPopup, $timeout, $scope,$state
 			if(Constants.DEBUGMODE){
 				console.log('authenticating with '+provider);
 			}	
+
+			//remove after a few seconds
+			$timeout(function() {
+		      $ionicLoading.hide();
+		   	}, 3000);
 		}
 
 		AuthService.login($scope.user,provider).then(success,error);

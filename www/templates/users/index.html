@@ -4,9 +4,14 @@
  </ion-nav-buttons>
  
   <ion-content class="has-header users-page">
+    <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="loadItems()">
+    </ion-refresher>
+
   	<div class="list">
 	    <a 	class="item item-avatar user-list-item"
-	    	collection-repeat="user in collection"
+	    	  collection-repeat="user in collection"
       		collection-item-width="'100%'"
       		collection-item-height="90" href="#/app/users/{{user.objectId}}">
 	      <img class="avatar" src="{{user.avatar}}">

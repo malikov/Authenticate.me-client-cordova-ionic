@@ -41,10 +41,18 @@ function(ModelCollection, UserModel, $ionicLoading, $timeout, $scope,$state, $st
 
 	var modelCollection = new ModelCollection({
 		model: UserModel,
-		busy: false
+		busy: false,
+		latestTop: true
 	});
 
   	$scope.loadItems = function(params){
+  		return modelCollection.get(params);
+  	}
+
+  	$scope.loadPreviousItems = function(params){
+  		var _params = angular.extend(params,{
+  			prev: true
+  		})
   		$ionicLoading.show({
 	    	template: 'Loading users...'
 	   	});
@@ -55,6 +63,9 @@ function(ModelCollection, UserModel, $ionicLoading, $timeout, $scope,$state, $st
   		return $state.go('app.start');
   	}
   	
+  	$ionicLoading.show({
+	    template: 'Loading users...'
+	});
   	//loading and setting the collection
   	$scope.loadItems(CtrlFilter._params).then(function(response){
   		$ionicLoading.hide();

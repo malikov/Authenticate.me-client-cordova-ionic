@@ -11,13 +11,24 @@ angular.module('services.models.collection',[])
 .factory('ModelCollection',['$q','$http',
   function($q, $http){
     var collection = function (options) {
-      this.options = angular.extend({busy : false, itemCount : 10, items : []},options);
+      this.options = angular.extend({
+        busy : false, 
+        itemCount : 10, 
+        items : [],
+        latestTop: true, // by default the latest entry is always at the top
+        nextPage: 0,
+        prevPage: 0
+      },options);
       
       this.items = this.options.items;
       this.busy = this.options.busy;
       this.itemCount = this.options.itemCount; // default is get them by group of 10
       this.model = new this.options.model() || {}; 
       this.url = this.model.url;
+
+      this.nextPage = this.options.nextPage;
+      this.prevPage = this.options.prevPage;
+
     };
     
     collection.prototype.reset = function(){
@@ -37,6 +48,7 @@ angular.module('services.models.collection',[])
     };
     
     /*
+      fetches the next set based on the next or previous page
       params:
         i : item index
         c : item count
@@ -44,7 +56,13 @@ angular.module('services.models.collection',[])
     collection.prototype.get = function(params){
       var self = this;
 
-      var _params = angular.extend(params , {i : self.itemIndex(), c : self.itemCount})|| {i : self.itemIndex(), c : self.itemCount};
+      var _params = angular.extend({
+        i : self.itemIndex(),
+        c : self.itemCount,
+        prev: false,
+        next: true,
+        cache: true
+      }, params);
       
       var deferred = $q.defer();
 
@@ -52,7 +70,11 @@ angular.module('services.models.collection',[])
         var output = response.payload;
         
         for (var i = 0; i < output.length; i++){
-          self.items.push(output[i]);
+          if(self.latestTop){
+            self.unshift(output[output.length-i]);
+          }else{
+            self.items.push(output[i]);
+          }
         }
         
         self.busy = false;
@@ -68,6 +90,13 @@ angular.module('services.models.collection',[])
         return deferred.reject();
 
       self.busy = true;
+
+      //
+      if(_params.next){
+        _params.from = (this.latestTop)? this.items[0] : this.items[this.itemIndex()];
+      }else{
+        _params.from = (this.latestTop)? this.items[this.itemIndex()] : this.items[0];
+      }
       
       $http.get(self.url, _params).success(success).error(error);
 
