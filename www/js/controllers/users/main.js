@@ -54,7 +54,7 @@ function(ModelCollection, UserModel, $ionicLoading, $timeout, $scope,$state, $st
 	});
 
   	//loading and setting the collection
-  	$scope.loadItems(CtrlFilter._params).then(function(response){
+  	$scope.loadItems().then(function(response){
   		$ionicLoading.hide();
   		$scope.collection = modelCollection.items;
   	}, function(error){
