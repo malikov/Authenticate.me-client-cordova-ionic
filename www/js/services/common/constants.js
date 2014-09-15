@@ -19,13 +19,22 @@ angular.module('services.common.constants',[])
     avatar : "img/avatar.png",
     profile_bg : "img/bg_new.png"
   }
+
+  var _timeouts = {
+    collection: {
+      user : 0
+    }
+  }
   
   var constants = {
     DEBUGMODE : false,
     SHOWBROADCAST_EVENTS : true,
     API: _API,
     IMG: _img,
+    timeouts: _timeouts
   };
+
+
 
   return constants;
 }])

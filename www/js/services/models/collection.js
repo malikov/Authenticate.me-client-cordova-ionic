@@ -8,8 +8,8 @@
  */
 
 angular.module('services.models.collection',[])
-.factory('ModelCollection',['$q','$http',
-  function($q, $http){
+.factory('ModelCollection',['$q','$http','$cacheFactory','Constants',
+  function($q, $http, $cacheFactory,C){
     var collection = function (options) {
       this.options = angular.extend({
         busy : false, 
@@ -60,7 +60,8 @@ angular.module('services.models.collection',[])
         i : self.itemIndex(),
         c : self.itemCount,
         prev: false,
-        next: true
+        next: true,
+        cache : true
       }, params);
       
       var deferred = $q.defer();
@@ -97,7 +98,18 @@ angular.module('services.models.collection',[])
         _params.from = (this.latestTop)? this.items[this.itemIndex()] : this.items[0];
       }
       
-      $http.get(self.url, _params).success(success).error(error);
+      var $cache = $cacheFactory.get('$http');
+      
+      var date = new Date();
+
+      // if it's been more than 5 minutes
+      if((date.getTime() - C.timeouts.collection.user) > 60000){
+        // clear cache
+        $cache.remove(self.url);
+        C.timeouts.collection.user = date.getTime();
+      }
+
+      $http.get(self.url, _params).success(success).error(error);  
 
       return deferred.promise;
     };
