@@ -77,6 +77,10 @@ function($ionicModal,$ionicLoading, $ionicPlatform, $ionicViewService, $scope,$s
 		$scope.modal.hide();
 	}
 
+	$scope.launchFrnchNrd = function(){
+		var browserWindow = window.open("http://frnchnrd.com", "_blank", "closebuttoncaption=Done,location=no");
+	}
+
 }]);
 
 
