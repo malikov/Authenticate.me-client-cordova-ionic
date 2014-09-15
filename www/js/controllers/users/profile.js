@@ -12,14 +12,13 @@ angular.module('controllers.users.profile', ['services.models.user'])
 .controller('UserCtrl', [
 	'CtrlFilter',
 	'UserModel',
-	'$ionicModal',
 	'$ionicLoading',
 	'$timeout',
 	'$scope',
 	'$state',
 	'$stateParams',
 	'Constants',
-function(CtrlFilter, UserModel, $ionicModal, $ionicLoading, $timeout, $scope,$state, $stateParams, Constants) {
+function(CtrlFilter, UserModel, $ionicLoading, $timeout, $scope,$state, $stateParams, Constants) {
 	if(Constants.DEBUGMODE){
 		console.log("UserCtrl controller");
 		console.log($stateParams);
@@ -34,7 +33,7 @@ function(CtrlFilter, UserModel, $ionicModal, $ionicLoading, $timeout, $scope,$st
 
 	$scope.$on("$destroy", function() {
 		// garbage collection
-		
+
   		if(Constants.DEBUGMODE){
   			console.log('destroying UserCtrl');
   		}

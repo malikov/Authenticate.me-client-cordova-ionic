@@ -14,9 +14,7 @@ angular.module('controllers.profile', ['ngCordova.plugins.camera'])
 	'$cordovaCamera',
 	'$ionicActionSheet',
 	'$ionicModal',
-	'$ionicViewService',
 	'$ionicLoading',
-	'$ionicNavBarDelegate',
 	'$ionicPopup',
 	'$timeout',
 	'$scope',
@@ -24,7 +22,7 @@ angular.module('controllers.profile', ['ngCordova.plugins.camera'])
 	'$stateParams',
 	'Constants',
 	'AuthService',
-function($cordovaCamera, $ionicActionSheet, $ionicModal, $ionicViewService, $ionicLoading, $ionicNavBarDelegate, $ionicPopup, $timeout, $scope,$state, $stateParams, Constants, AuthService) {
+function($cordovaCamera, $ionicActionSheet, $ionicModal, $ionicLoading, $ionicPopup, $timeout, $scope,$state, $stateParams, Constants, AuthService) {
 	//show loading gif
 	$ionicLoading.show({
     	template: 'Loading profile...'

@@ -30,6 +30,7 @@ function($ionicModal,$ionicLoading, $ionicPlatform, $ionicViewService, $scope,$s
 		$scope.modal = modal;
 	});
 	
+	// setting $scope.user to the current user logged in the system
 	$scope.user = AuthService.currentUser.info;
 
 	if(AuthService.currentUser.info.avatar === ""){

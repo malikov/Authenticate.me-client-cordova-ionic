@@ -12,7 +12,6 @@ angular.module('controllers.auth', [])
 
 .controller('AuthCtrl', [
 	'$ionicLoading',
-	'$ionicNavBarDelegate',
 	'$ionicPopup',
 	'$timeout',
 	'$scope',
@@ -20,22 +19,15 @@ angular.module('controllers.auth', [])
 	'$stateParams',
 	'Constants',
 	'AuthService',
-function($ionicLoading,$ionicNavBarDelegate,$ionicPopup, $timeout, $scope,$state, $stateParams, Constants, AuthService,$cordovaLocalStorage) {
+function($ionicLoading,$ionicPopup, $timeout, $scope,$state, $stateParams, Constants, AuthService,$cordovaLocalStorage) {
 	
 	if(Constants.DEBUGMODE){
 		console.log("AuthCtrl controller");
 		console.log($stateParams);
 	}
 
-	// user data passed to authentication service
+	// user data passed to the authentication service
 	$scope.user = {};
-
-    var authType = ($stateParams.type)? $stateParams.type : 'login';
-    
-    $scope.auth = {
-		type : authType
-	}
-
 	
 	// function for loging the user
 	$scope.authenticateUser = function(provider){
@@ -71,6 +63,7 @@ function($ionicLoading,$ionicNavBarDelegate,$ionicPopup, $timeout, $scope,$state
 		}
 
 		var success = function(response){
+			// if the authentication is successful go to profile view
 			if(Constants.DEBUGMODE){
 				console.log("Authentication successful")
 				console.log(response);
@@ -97,6 +90,7 @@ function($ionicLoading,$ionicNavBarDelegate,$ionicPopup, $timeout, $scope,$state
 		   	}, 3000);
 		}
 
+		// use AuthService to login
 		AuthService.login($scope.user,provider).then(success,error);
 	}
 

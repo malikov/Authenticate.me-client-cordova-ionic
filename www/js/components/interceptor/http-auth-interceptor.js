@@ -2,6 +2,8 @@
  * @license HTTP Auth Interceptor Module for AngularJS
  * (c) 2012 Witold Szczerba
  * License: MIT
+ *
+ * This file was altered from the original version on line 62 to 65
  */
 (function () {
   'use strict';
