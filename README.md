@@ -22,7 +22,7 @@ you can download the apk [here](https://drive.google.com/file/d/0B9GTa-_sqdVJNnZ
 
 ## Using this project
 
-The following steps assumes your environment is  an android / ios ready. If you haven't downloaded the appropriate SDKs (ADT, or xcode) and setup the appropriate PATH variables (mostly for android), please do so before doing the steps below. You'll need nodejs installed as well.
+The following steps assume your environment is  android / ios ready. If you haven't downloaded the appropriate SDKs (ADT, or xcode) and setup the appropriate PATH variables (mostly for android), please do so before doing the steps below. You'll need nodejs installed as well.
 
 ### 1. Ionic / Cordova 
 
