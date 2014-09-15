@@ -52,3 +52,19 @@ Then to build the project run:
  ionic run android
  ionic run ios
 ```
+
+### 5. Customization
+I'd start by looking at the AuthService and Constants.js file. The api url implemented on the client side for the login/registration needs to match the router's url on the server side
+
+api calls
+POST /login
+POST /register
+
+GET /oauth/[provider] where the provider is the either twitter or instagram
+
+
+### TODO
+tests
+
+add facebook
+add native sdk functionalities (i.e : use facebook or twitter's sdk if the app is installed on the phone use the native app otherwise fallback to window.open)

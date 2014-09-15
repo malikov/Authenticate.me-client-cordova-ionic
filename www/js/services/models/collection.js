@@ -60,8 +60,7 @@ angular.module('services.models.collection',[])
         i : self.itemIndex(),
         c : self.itemCount,
         prev: false,
-        next: true,
-        cache: true
+        next: true
       }, params);
       
       var deferred = $q.defer();
