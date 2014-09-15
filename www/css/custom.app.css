@@ -2442,31 +2442,31 @@ ion-infinite-scroll {
 
 /* If you change these, change platform.scss as well */
 .has-header {
-  top: 44px; }
+  top: 60px; }
 
 .no-header {
   top: 0; }
 
 .has-subheader {
-  top: 88px; }
+  top: 120px; }
 
 .has-tabs-top {
-  top: 93px; }
+  top: 109px; }
 
 .has-header.has-subheader.has-tabs-top {
-  top: 137px; }
+  top: 169px; }
 
 .has-footer {
-  bottom: 44px; }
+  bottom: 60px; }
 
 .has-subfooter {
-  bottom: 88px; }
+  bottom: 120px; }
 
 .has-tabs, .bar-footer.has-tabs {
   bottom: 49px; }
 
 .has-footer.has-tabs {
-  bottom: 93px; }
+  bottom: 109px; }
 
 .pane {
   -webkit-transform: translate3d(0, 0, 0);
@@ -2721,7 +2721,7 @@ a.subdued {
   box-sizing: border-box;
   padding: 5px;
   width: 100%;
-  height: 44px;
+  height: 60px;
   border-width: 0;
   border-style: solid;
   border-top: 1px solid transparent;
@@ -2842,12 +2842,12 @@ a.subdued {
     overflow: hidden;
     margin: 0 10px;
     min-width: 30px;
-    height: 43px;
+    height: 59px;
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size: 17px;
-    line-height: 44px; }
+    line-height: 60px; }
     .bar .title.title-left, .bar .bar {
       text-align: left; }
     .bar .title.title-right, .bar .bar {
@@ -2858,21 +2858,21 @@ a.subdued {
     z-index: 1;
     padding: 0 8px;
     min-width: initial;
-    min-height: 31px;
+    min-height: 47px;
     font-weight: 400;
     font-size: 13px;
-    line-height: 32px; }
+    line-height: 48px; }
     .bar .button.button-icon:before, .bar .bar, .bar .button-icon.button:before, .bar .button .icon:before, .bar .button .bar, .bar .button .button, .bar .button.icon:before, .bar .bar, .bar .icon.button:before, .bar .button.icon-left:before, .bar .bar, .bar .icon-left.button:before, .bar .button.icon-right:before, .bar .bar, .bar .icon-right.button:before {
       padding-right: 2px;
       padding-left: 2px;
       font-size: 20px;
-      line-height: 32px; }
+      line-height: 48px; }
     .bar .button.button-icon, .bar .bar, .bar .button-icon.button {
       font-size: 17px; }
       .bar .button.button-icon .icon:before, .bar .button.button-icon .bar, .bar .button.button-icon .button-icon.button, .bar .button.button-icon:before, .bar .bar, .bar .button-icon.button:before, .bar .button.button-icon.icon-left:before, .bar .bar, .bar .button-icon.icon-left.button:before, .bar .button.button-icon.icon-right:before, .bar .bar, .bar .button-icon.icon-right.button:before {
         vertical-align: top;
         font-size: 32px;
-        line-height: 32px; }
+        line-height: 48px; }
     .bar .button.button-clear, .bar .bar, .bar .button-clear.button {
       padding-right: 2px;
       padding-left: 2px;
@@ -2880,7 +2880,7 @@ a.subdued {
       font-size: 17px; }
       .bar .button.button-clear .icon:before, .bar .button.button-clear .bar, .bar .button.button-clear .button-clear.button, .bar .button.button-clear.icon:before, .bar .bar, .bar .button-clear.icon.button:before, .bar .button.button-clear.icon-left:before, .bar .bar, .bar .button-clear.icon-left.button:before, .bar .button.button-clear.icon-right:before, .bar .bar, .bar .button-clear.icon-right.button:before {
         font-size: 32px;
-        line-height: 32px; }
+        line-height: 48px; }
     .bar .button.back-button, .bar .bar, .bar .back-button.button {
       padding: 0;
       opacity: 0.8; }
@@ -2891,8 +2891,8 @@ a.subdued {
     .bar .button.back-button.active, .bar .bar, .bar .back-button.active.button, .bar .button.back-button.activated, .bar .bar, .bar .back-button.activated.button {
       opacity: 1; }
   .bar .button-bar > .button, .bar .button-bar > .bar, .bar .button-bar > .button, .bar .buttons > .button, .bar .buttons > .bar, .bar .buttons > .button {
-    min-height: 31px;
-    line-height: 32px; }
+    min-height: 47px;
+    line-height: 48px; }
   .bar .button-bar + .button, .bar .button-bar + .bar, .bar .button-bar + .button, .bar .button + .button-bar, .bar .button + .bar, .bar .button + .button {
     margin-left: 5px; }
   .bar .buttons, .bar .bar, .bar .buttons.left-buttons, .bar .bar, .bar .buttons.right-buttons, .bar .bar {
@@ -3113,11 +3113,11 @@ a.subdued {
   padding: 0; }
 
 .bar-subheader {
-  top: 44px;
+  top: 60px;
   display: block; }
 
 .bar-subfooter {
-  bottom: 44px;
+  bottom: 60px;
   display: block; }
 
 /**
@@ -3581,7 +3581,7 @@ a.subdued {
 /* Allow parent element to have tabs-top */
 /* If you change this, change platform.scss as well */
 .tabs-top > .tabs, .tabs.tabs-top {
-  top: 44px;
+  top: 60px;
   padding-top: 0;
   background-position: bottom; }
   .tabs-top > .tabs .tab-item.tab-item-active .badge, .tabs-top > .tabs .tab-item.active .badge, .tabs-top > .tabs .tab-item.activated .badge, .tabs.tabs-top .tab-item.tab-item-active .badge, .tabs.tabs-top .tab-item.active .badge, .tabs.tabs-top .tab-item.activated .badge {
@@ -3794,19 +3794,19 @@ a.subdued {
   .modal.ng-leave-active {
     bottom: 0; }
   .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) {
-    height: 44px; }
+    height: 60px; }
     .platform-ios.platform-cordova .modal-wrapper .modal .bar-header:not(.bar-subheader) > * {
       margin-top: 0; }
   .platform-ios.platform-cordova .modal-wrapper .modal .tabs-top > .tabs, .platform-ios.platform-cordova .modal-wrapper .modal .tabs.tabs-top {
-    top: 44px; }
+    top: 60px; }
   .platform-ios.platform-cordova .modal-wrapper .modal .has-header, .platform-ios.platform-cordova .modal-wrapper .modal .bar-subheader {
-    top: 44px; }
+    top: 60px; }
   .platform-ios.platform-cordova .modal-wrapper .modal .has-subheader {
-    top: 88px; }
+    top: 120px; }
   .platform-ios.platform-cordova .modal-wrapper .modal .has-tabs-top {
-    top: 93px; }
+    top: 109px; }
   .platform-ios.platform-cordova .modal-wrapper .modal .has-header.has-subheader.has-tabs-top {
-    top: 137px; } }
+    top: 169px; } }
 
 .modal-open {
   pointer-events: none; }
@@ -7630,21 +7630,21 @@ a.button {
   }
   */
 .platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) {
-  height: 64px; }
+  height: 80px; }
   .platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset .item-input-wrapper {
     margin-top: 19px !important; }
   .platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
     margin-top: 20px; }
 .platform-ios.platform-cordova:not(.fullscreen) .tabs-top > .tabs, .platform-ios.platform-cordova:not(.fullscreen) .tabs.tabs-top {
-  top: 64px; }
+  top: 80px; }
 .platform-ios.platform-cordova:not(.fullscreen) .has-header, .platform-ios.platform-cordova:not(.fullscreen) .bar-subheader {
-  top: 64px; }
+  top: 80px; }
 .platform-ios.platform-cordova:not(.fullscreen) .has-subheader {
-  top: 108px; }
+  top: 140px; }
 .platform-ios.platform-cordova:not(.fullscreen) .has-tabs-top {
-  top: 113px; }
+  top: 129px; }
 .platform-ios.platform-cordova:not(.fullscreen) .has-header.has-subheader.has-tabs-top {
-  top: 157px; }
+  top: 189px; }
 .platform-ios.platform-cordova.status-bar-hide {
   margin-bottom: 20px; }
 
