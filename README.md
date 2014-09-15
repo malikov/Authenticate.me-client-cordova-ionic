@@ -70,14 +70,8 @@ Then to build the project run:
  ionic run ios
 ```
 
-### 5. Customization
+### 5. Configuration
 I'd start by looking at the AuthService and Constants.js file. The api url implemented on the client side for the login/registration needs to match the router's url on the server side
-
-api calls
-POST /login
-POST /register
-
-GET /oauth/[provider] where the provider is the either twitter or instagram
 
 
 ### TODO
