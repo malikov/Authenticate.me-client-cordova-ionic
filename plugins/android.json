@@ -13,10 +13,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"ChildBrowser\"><param name=\"android-package\" value=\"com.phonegap.plugins.childBrowser.ChildBrowser\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
                             "count": 1
                         },
@@ -39,18 +35,17 @@
                         {
                             "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
             },
             "AndroidManifest.xml": {
                 "parents": {
-                    "/manifest/application": [
-                        {
-                            "xml": "<activity android:label=\"@string/app_name\" android:name=\"com.phonegap.plugins.childBrowser.ChildBrowser\"><intent-filter></intent-filter></activity>",
-                            "count": 1
-                        }
-                    ],
+                    "/manifest/application": [],
                     "/*": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
@@ -67,9 +62,6 @@
     },
     "installed_plugins": {
         "com.ionic.keyboard": {
-            "PACKAGE_NAME": "com.frnchnrd.authenticateme"
-        },
-        "com.phonegap.plugins.childbrowser": {
             "PACKAGE_NAME": "com.frnchnrd.authenticateme"
         },
         "org.apache.cordova.camera": {
@@ -91,6 +83,9 @@
             "PACKAGE_NAME": "com.frnchnrd.authenticateme"
         },
         "org.apache.cordova.network-information": {
+            "PACKAGE_NAME": "com.frnchnrd.authenticateme"
+        },
+        "org.apache.cordova.splashscreen": {
             "PACKAGE_NAME": "com.frnchnrd.authenticateme"
         }
     },

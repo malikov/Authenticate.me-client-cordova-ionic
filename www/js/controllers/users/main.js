@@ -20,8 +20,6 @@ angular.module('controllers.users', ['services.models.collection','services.mode
 	'Constants',
 	'AuthService',
 function(ModelCollection, UserModel, $ionicLoading, $timeout, $scope,$state, $stateParams, Constants, AuthService) {
-	//show loading gif
-	
 	if(Constants.DEBUGMODE){
 		console.log("UsersCtrl controller");
 		console.log($stateParams);
@@ -29,45 +27,58 @@ function(ModelCollection, UserModel, $ionicLoading, $timeout, $scope,$state, $st
 	
 	$scope.$on('event:auth-loginRequired', function() {
 		$ionicLoading.hide();
-  	});
+  });
 
+  // set a modelCollection with the userModel type
+  // this way the collection.get call will query api/users
 	var modelCollection = new ModelCollection({
 		model: UserModel,
 		busy: false,
 		latestTop: true
 	});
+  
+  // binding the collection to the modelCollection.items array
+  // after fetching the items the collection will be updated
+  $scope.collection = modelCollection.items;
 
-  	$scope.loadItems = function(params){
-  		return modelCollection.get(params);
-  	}
+  // loading items from the server
+  $scope.loadItems = function(params){
+  	return modelCollection.get(params);
+  }
 
-  	$scope.loadPreviousItems = function(params){
-  		var _params = angular.extend(params,{
-  			prev: true
-  		})
+  // TODO not functional right now
+  $scope.loadPreviousItems = function(params){
+  	var _params = angular.extend(params,{
+  		prev: true
+  	})
   		
-  		return modelCollection.get(params);
-  	}
+  	return modelCollection.get(params);
+  }
 
-  	$ionicLoading.show({
+  $ionicLoading.show({
 	    template: 'Loading users...'
 	});
 
-  	//loading and setting the collection
-  	$scope.loadItems().then(function(response){
-  		$ionicLoading.hide();
-  		$scope.collection = modelCollection.items;
-  	}, function(error){
-  		if(Constants.DEBUGMODE){
-  			console.log("UsersCtrl couldn't fetch collection items");
-  		}
-  	});
+  //loading and setting the collection
+  $scope.loadItems().then(function(response){
+    // close the loading overlay
+  	$ionicLoading.hide();
+  }, function(error){
+  	if(Constants.DEBUGMODE){
+  		console.log("UsersCtrl couldn't fetch collection items");
+  	}
 
-  	$scope.$on("$destroy", function() {
-  		if(Constants.DEBUGMODE){
-  			console.log('destroying UsersCtrl');
-  		}
+    // close the loading overlay
+    $ionicLoading.hide();
+  });
 
-  		modelCollection = null;
-    });
+  $scope.$on("$destroy", function() {
+    // garbage collection destroy this object
+  	if(Constants.DEBUGMODE){
+  		console.log('destroying UsersCtrl');
+  	}
+
+  	modelCollection = null;
+  });
+  
 }])

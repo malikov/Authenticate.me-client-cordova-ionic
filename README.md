@@ -5,9 +5,11 @@ A starting project to achieve server side authentication for hybrid apps. This i
 
 ## Using this project
 
+The following steps assumes your environment is  an android / ios ready. If you haven't downloaded the appropriate SDKs (ADT, or xcode) and setup the appropriate PATH variables (mostly for android), please do so before doing the steps below. You'll need nodejs installed as well.
+
 ### 1. Ionic / Cordova 
 
-make sure both [ionic](http://ionicframework.com/) and cordova are installed on your machine if not then run : 
+make sure both [ionic](http://ionicframework.com/) and cordova are installed on your machine if not run the following command : 
 
 ```bash
  npm install -g cordova ionic

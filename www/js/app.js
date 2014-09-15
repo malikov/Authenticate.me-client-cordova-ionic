@@ -1,5 +1,14 @@
 'use strict';
 
+/*
+ * app.js
+ *
+ * point of entry for the app
+ *
+ * (c) 2014 Vincent Maliko http://frnchnrd.com
+ * License: MIT
+ */
+
 angular.module('AuthenticateMe', [
   'ionic',
   'controllers.main',
@@ -106,7 +115,7 @@ angular.module('AuthenticateMe', [
       }
   }];
 
-  // quick hack to load before controller gets called
+  // quick hack to load before the controller gets called
   var _ctrlFilter = function(options){
     var opts = angular.extend({
       dependencies : ['Constants','$state','$stateParams'],
@@ -122,7 +131,7 @@ angular.module('AuthenticateMe', [
         var model = new Model();
         model.get($stateParams.id).then(function(response){
           if(C.DEBUGMODE){
-            console.log("success fetching controller data");
+            console.log("success fetching model's data");
           }
 
           return deferred.resolve({
@@ -131,10 +140,10 @@ angular.module('AuthenticateMe', [
               model: model.info
             }
           });
-
+          
         }, function(error){
           if(C.DEBUGMODE){
-            console.log("error fetching controller data");
+            console.log("error fetching model's data");
           }
 
           return deferred.reject();

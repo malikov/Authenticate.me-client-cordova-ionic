@@ -1,7 +1,8 @@
 'use.strict'
 /*
  * models/user.js
- *
+ * This model represents a user in the database
+ * 
  * (c) 2014 Vincent Maliko http://frnchnrd.com
  * License: MIT
  */
@@ -33,7 +34,8 @@ angular.module('services.models.user',[])
         deferred.reject(error);
       }
 
-      $http.get(this.url+'/'+id).success(success).error(error);
+      // since the data is cached maybe it'll be nice to reload new data after a x minutes.
+      $http.get(this.url+'/'+id, {cache: true}).success(success).error(error);
       
       return deferred.promise;
     }
