@@ -22,7 +22,7 @@ you can download the apk [here](https://drive.google.com/file/d/0B9GTa-_sqdVJNnZ
 
 ## Using this project
 
-The following steps assumes your environment is  an android / ios ready. If you haven't downloaded the appropriate SDKs (ADT, or xcode) and setup the appropriate PATH variables (mostly for android), please do so before doing the steps below. You'll need nodejs installed as well.
+The following steps assume your environment is  android / ios ready. If you haven't downloaded the appropriate SDKs (ADT, or xcode) and setup the appropriate PATH variables (mostly for android), please do so before doing the steps below. You'll need nodejs installed as well.
 
 ### 1. Ionic / Cordova 
 
@@ -70,14 +70,8 @@ Then to build the project run:
  ionic run ios
 ```
 
-### 5. Customization
+### 5. Configuration
 I'd start by looking at the AuthService and Constants.js file. The api url implemented on the client side for the login/registration needs to match the router's url on the server side
-
-api calls
-POST /login
-POST /register
-
-GET /oauth/[provider] where the provider is the either twitter or instagram
 
 
 ### TODO
