@@ -5,22 +5,21 @@ A starting project to achieve server side authentication for hybrid apps. This i
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-10-25.png" alt="Main Page" width="200px"/>
+<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-10-25.png" alt="Main Page" width="200px" style="float:right" />
 
-<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-10-30.png" alt="Sign In Page" width="200px"/>
+<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-10-30.png" alt="Sign In Page" width="200px" style="float:right" />
 
-<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-10-36.png" alt="SignUp Page" width="200px"/>
+<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-10-36.png" alt="SignUp Page" width="200px" style="float:right" />
 
-<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-12-26.png" alt="Instagram login page" width="200px"/>
+<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-12-26.png" alt="Instagram login page" width="200px" style="float:right" />
 
-<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-12-36.png" alt="Twitter login page" width="200px"/>
+<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-12-36.png" alt="Twitter login page" width="200px" style="float:right" />
 
-<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-12-55.png" alt="Profile page" width="200px"/>
+<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-12-55.png" alt="Profile page" width="200px" style="float:right" />
 
-<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-13-01.png" alt="User sidebar" width="200px"/>
+<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-13-01.png" alt="User sidebar" width="200px" style="float:right" />
 
-<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-13-05.png" alt="Users list" width="200px"/>
-
+<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-13-05.png" alt="Users list" width="200px" style="float:right" />
 
 ## APK
 
