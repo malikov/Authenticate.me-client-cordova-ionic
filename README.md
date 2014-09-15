@@ -4,16 +4,22 @@ Authenticate.me app front end (ionic, angularjs, cordova)
 A starting project to achieve server side authentication for hybrid apps. This is the front end. You can either create your server side api based on the following blog post : [http://www.frnchnrd.com/blog/](http://www.frnchnrd.com/blog/) or reuse the [authenticate.me server nodejs codebase](https://github.com/malikov/Authenticate.me-Node-Server).
 
 ## Screenshots
-![Main page](https://drive.google.com/file/d/0B9GTa-_sqdVJRlBIdmF5ampzd1k/edit?usp=sharing)
-![SignIn page](https://drive.google.com/file/d/0B9GTa-_sqdVJQkY5d0U3U1F2OGM/edit?usp=sharing)
-![SignUp page](https://drive.google.com/file/d/0B9GTa-_sqdVJWlRfS0VWMGxxbzg/edit?usp=sharing)
-![Instagram login page](https://drive.google.com/file/d/0B9GTa-_sqdVJa3YyY2xuYVY5V28/edit?usp=sharing)
-![Twitter login page](https://drive.google.com/file/d/0B9GTa-_sqdVJYWdiX3VvVFhpUDQ/edit?usp=sharing)
 
-![Profile page](https://drive.google.com/file/d/0B9GTa-_sqdVJMUhteE9WRFVOaGM/edit?usp=sharing)
-![User sidebar](https://drive.google.com/file/d/0B9GTa-_sqdVJT0k2Ujh3SERKS2s/edit?usp=sharing)
+<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-10-25.png" alt="Main Page" width="200px"/>
 
-![Users list](https://drive.google.com/file/d/0B9GTa-_sqdVJUUNBa1pCLXQyOU0/edit?usp=sharing)
+<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-10-30.png" alt="Sign In Page" width="200px"/>
+
+<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-10-36.png" alt="SignUp Page" width="200px"/>
+
+<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-12-26.png" alt="Instagram login page" width="200px"/>
+
+<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-12-36.png" alt="Twitter login page" width="200px"/>
+
+<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-12-55.png" alt="Profile page" width="200px"/>
+
+<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-13-01.png" alt="User sidebar" width="200px"/>
+
+<img src="https://raw.githubusercontent.com/malikov/Authenticate.me-client-cordova-ionic/master/www/img/Screenshot_2014-09-15-16-13-05.png" alt="Users list" width="200px"/>
 
 
 ## APK
