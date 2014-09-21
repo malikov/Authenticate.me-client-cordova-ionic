@@ -1,11 +1,12 @@
 Authenticate.me app front end (ionic, angularjs, cordova)
 ================================================================
 
+A starting project to achieve server side authentication for hybrid apps. This is the front end. You can either create your server side api based on the following blog post : [http://www.frnchnrd.com/blog/](http://www.frnchnrd.com/blog/) or reuse the [authenticate.me server nodejs codebase](https://github.com/malikov/Authenticate.me-Node-Server).
+
 ## Update cordova to 3.6.0 
 
 Note : you'll need the latest version of cordova (3.6.0) for the inAppBrowser plugin to work correctly with ios8 otherwise it will be broken.
 
-A starting project to achieve server side authentication for hybrid apps. This is the front end. You can either create your server side api based on the following blog post : [http://www.frnchnrd.com/blog/](http://www.frnchnrd.com/blog/) or reuse the [authenticate.me server nodejs codebase](https://github.com/malikov/Authenticate.me-Node-Server).
 
 ## Screenshots
 
