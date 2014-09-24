@@ -71,7 +71,7 @@ angular.module('AuthenticateMe', [
     });
 
     if(!toState.authenticate && AuthService.isLoggedIn()){
-      // User isn’t authenticated
+      // User is logged in redirect to profile page
       $state.transitionTo("app.profile");
       event.preventDefault(); 
     }else if(toState.authenticate && !AuthService.isLoggedIn()){
