@@ -22,7 +22,7 @@ angular.module('AuthenticateMe', [
   'ngCordova.plugins.network'
 ])
 
-.run(function($ionicPlatform, AuthService, Constants, $state, $rootScope,$http,$cordovaNetwork,$ionicLoading) {
+.run(function($ionicPlatform, $state, $rootScope, $http, $cordovaNetwork, $ionicLoading, AuthService, Constants) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
